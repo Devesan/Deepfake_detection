@@ -1,0 +1,1 @@
+{"test/accuracy": 0.970898449420929, "train/learning_rate": 0.0, "test/img_sec_core": 118.05284621065235, "train/img_sec_core": 39.98198843785445, "train/loss": 0.05699607729911804, "_runtime": 5230, "_timestamp": 1641253652, "_step": 3000, "_wandb": {"runtime": 5230}}

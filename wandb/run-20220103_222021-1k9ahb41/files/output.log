@@ -1,0 +1,1026 @@
+I0103 22:20:25.488608 140262765472832 xla_bridge.py:243] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+I0103 22:20:25.489378 140262765472832 xla_bridge.py:243] Unable to initialize backend 'gpu': NOT_FOUND: Could not find registered platform with name: "cuda". Available platform names are: Interpreter Host TPU
+I0103 22:20:31.745015 140262765472832 main.py:54] JAX process: 0 / 1
+I0103 22:20:31.745522 140262765472832 main.py:55] JAX local devices: [TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+I0103 22:20:31.745939 140262765472832 main.py:58] Using JAX XLA backend
+I0103 22:20:31.746927 140262765472832 main.py:60] Config: accum_steps: 8
+base_lr: 0.03
+batch: 512
+batch_eval: 512
+checkpoint_every: 1000
+dataset: cifar10
+decay_type: cosine
+eval_every: 100
+grad_norm_clip: 1.0
+model:
+  classifier: token
+  hidden_size: 768
+  name: ViT-B_16
+  patches:
+    size: !!python/tuple
+    - 16
+    - 16
+  representation_size: null
+  transformer:
+    attention_dropout_rate: 0.0
+    dropout_rate: 0.0
+    mlp_dim: 3072
+    num_heads: 12
+    num_layers: 12
+model_or_filename: null
+optim_dtype: bfloat16
+pp:
+  crop: 384
+  test: test
+  train: train[:98%]
+prefetch: 2
+pretrained_dir: gs://vit_models/imagenet21k
+progress_every: 10
+shuffle_buffer: 50000
+tfds_data_dir: null
+tfds_manual_dir: null
+total_steps: 3000
+trainer: train
+warmup_steps: 400
+I0103 22:20:31.751613 140262765472832 local.py:45] Setting task status: process_index: 0, process_count: 1
+I0103 22:20:31.752110 140262765472832 local.py:50] Created artifact workdir of type ArtifactType.DIRECTORY and value /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418.
+I0103 22:20:31.753797 140262765472832 dataset_info.py:358] Load dataset info from /home/gdevesan_gmail_com/tensorflow_datasets/cifar10/3.0.2
+I0103 22:20:31.756266 140262765472832 input_pipeline.py:87] custom directory loading inplace ...
+I0103 22:20:31.756706 140262765472832 input_pipeline.py:88] /home/gdevesan_gmail_com/datasets/processed_images
+I0103 22:20:31.757009 140262765472832 input_pipeline.py:97] Reading dataset from directories "/home/gdevesan_gmail_com/datasets/processed_images/train" and "/home/gdevesan_gmail_com/datasets/processed_images/test"
+I0103 22:20:33.669859 140262765472832 train.py:81] <PrefetchDataset shapes: {image: (8, 64, 384, 384, 3), label: (8, 64, 2)}, types: {image: tf.float32, label: tf.float32}>
+I0103 22:20:33.671216 140262765472832 train.py:82] <PrefetchDataset shapes: {image: (8, 64, 384, 384, 3), label: (8, 64, 2)}, types: {image: tf.float32, label: tf.float32}>
+W0103 22:20:38.320363 140262765472832 dispatch.py:197] Compiling init_model (140245391399296) for args ().
+I0103 22:21:48.863032 140262765472832 checkpoint.py:71] Inspect extra keys:
+{'pre_logits/bias', 'pre_logits/kernel'}
+I0103 22:21:48.863893 140262765472832 checkpoint.py:164] load_pretrained: drop-head variant
+I0103 22:21:48.864665 140262765472832 checkpoint.py:174] load_pretrained: resized variant: (1, 197, 768) to (1, 577, 768)
+I0103 22:21:48.865157 140262765472832 checkpoint.py:186] load_pretrained: grid-size from 14 to 24
+W0103 22:21:48.899018 140262765472832 dispatch.py:197] Compiling prim_fun (140245366661696) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.917395 140262765472832 dispatch.py:197] Compiling prim_fun (140245366315648) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.926142 140262765472832 dispatch.py:197] Compiling prim_fun (140245366713856) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.944273 140262765472832 dispatch.py:197] Compiling prim_fun (140245366008384) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.961993 140262765472832 dispatch.py:197] Compiling prim_fun (140245366084480) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.970291 140262765472832 dispatch.py:197] Compiling prim_fun (140245388622080) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:48.988923 140262765472832 dispatch.py:197] Compiling prim_fun (140245388589568) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:49.085813 140262765472832 dispatch.py:197] Compiling prim_fun (140245364648128) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:49.133597 140262765472832 dispatch.py:197] Compiling prim_fun (140245388587328) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:49.142330 140262765472832 dispatch.py:197] Compiling prim_fun (140245366766656) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:49.200763 140262765472832 dispatch.py:197] Compiling prim_fun (140245364728768) for args (ShapedArray(bfloat16[]),).
+W0103 22:21:49.209549 140262765472832 dispatch.py:197] Compiling prim_fun (140245366607104) for args (ShapedArray(bfloat16[]),).
+I0103 22:21:49.219157 140262765472832 checkpoints.py:249] Found no checkpoint files in /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418
+I0103 22:21:49.219485 140262765472832 train.py:150] Will start/continue training at initial_step=1
+W0103 22:21:49.512603 140262765472832 dispatch.py:197] Compiling prim_fun (140245388367552) for args (ShapedArray(int32[]), ShapedArray(int32[])).
+W0103 22:21:49.522700 140262765472832 dispatch.py:197] Compiling prim_fun (140245388162176) for args (ShapedArray(int32[]),).
+W0103 22:21:49.530434 140262765472832 dispatch.py:197] Compiling prim_fun (140245385387968) for args (ShapedArray(uint32[]),).
+W0103 22:21:49.538021 140262765472832 dispatch.py:197] Compiling <lambda> (140245363762112) for args (ShapedArray(int32[]), ShapedArray(uint32[])).
+W0103 22:21:49.547221 140262765472832 dispatch.py:197] Compiling prim_fun (140245354674432) for args (ShapedArray(uint32[1]), ShapedArray(uint32[1])).
+I0103 22:21:49.559573 140262765472832 logging_writer.py:57] Hyperparameters: {'accum_steps': 8, 'base_lr': 0.03, 'batch': 512, 'batch_eval': 512, 'checkpoint_every': 1000, 'dataset': '/home/gdevesan_gmail_com/datasets/processed_images', 'decay_type': 'cosine', 'eval_every': 100, 'grad_norm_clip': 1.0, 'model': {'classifier': 'token', 'hidden_size': 768, 'name': 'ViT-B_16', 'patches': {'size': (16, 16)}, 'representation_size': None, 'transformer': {'attention_dropout_rate': 0.0, 'dropout_rate': 0.0, 'mlp_dim': 3072, 'num_heads': 12, 'num_layers': 12}}, 'model_or_filename': None, 'optim_dtype': 'bfloat16', 'pp': {'crop': 384, 'test': 'test', 'train': 'train[:98%]'}, 'prefetch': 2, 'pretrained_dir': 'gs://vit_models/imagenet21k', 'progress_every': 10, 'shuffle_buffer': 50000, 'tfds_data_dir': None, 'tfds_manual_dir': None, 'total_steps': 3000, 'trainer': 'train', 'warmup_steps': 400}
+I0103 22:21:49.563607 140262765472832 train.py:171] Starting training loop; initial compile can take a while...
+/home/gdevesan_gmail_com/env/lib/python3.8/site-packages/jax/_src/profiler.py:169: UserWarning: StepTraceContext has been renamed to StepTraceAnnotation. This alias will eventually be removed; please update your code.
+  warnings.warn(
+W0103 22:22:07.999948 140262765472832 pxla.py:1007] Compiling update_fn (140245365463808) for 8 devices with args (ShapedArray(int32[8]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072]), ShapedArray(bfloat16[8,768,3072]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,3072,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,12,64,768]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,12,64]), ShapedArray(bfloat16[8,768,12,64]), ShapedArray(bfloat16[8,1,577,768]), ShapedArray(bfloat16[8,1,1,768]), ShapedArray(bfloat16[8,768]), ShapedArray(bfloat16[8,16,16,3,768]), ShapedArray(bfloat16[8,2]), ShapedArray(bfloat16[8,768,2]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,1,577,768]), ShapedArray(float32[8,1,1,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,16,16,3,768]), ShapedArray(float32[8,2]), ShapedArray(float32[8,768,2]), ShapedArray(int32[8]), ShapedArray(float32[8,64,384,384,3]), ShapedArray(float32[8,64,2]), ShapedArray(uint32[8,2])). (num_replicas=8 num_partitions=1)
+I0103 22:23:20.869626 140262765472832 train.py:186] First step took 91.3 seconds.
+I0103 22:23:36.944228 140262765472832 logging_writer.py:35] [10] img_sec_core_train=207.835354, train_loss=0.668959
+I0103 22:23:36.949562 140262765472832 train.py:201] Step: 10/3000 0.3%, img/sec/core: 207.8, ETA: 1.34h
+I0103 22:23:48.100341 140262765472832 local.py:50] Created artifact [10] Profile of type ArtifactType.URL and value None.
+I0103 22:23:56.130097 140262765472832 logging_writer.py:35] [20] img_sec_core_train=24.918639, train_loss=0.539660
+I0103 22:23:56.133015 140262765472832 train.py:201] Step: 20/3000 0.7%, img/sec/core: 24.9, ETA: 1.46h
+I0103 22:24:12.157778 140262765472832 logging_writer.py:35] [30] img_sec_core_train=66.453978, train_loss=0.402595
+I0103 22:24:12.161181 140262765472832 train.py:201] Step: 30/3000 1.0%, img/sec/core: 66.5, ETA: 1.41h
+I0103 22:24:28.190904 140262765472832 logging_writer.py:35] [40] img_sec_core_train=40.243490, train_loss=0.336847
+I0103 22:24:28.193388 140262765472832 train.py:201] Step: 40/3000 1.3%, img/sec/core: 40.2, ETA: 1.38h
+I0103 22:24:28.215009 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 1.4% (41/3000), ETA: 1h23m
+I0103 22:24:28.215869 140262765472832 logging_writer.py:35] [41] steps_per_sec=0.593953
+I0103 22:24:44.220149 140262765472832 logging_writer.py:35] [50] img_sec_core_train=40.276633, train_loss=0.332577
+I0103 22:24:44.223332 140262765472832 train.py:201] Step: 50/3000 1.7%, img/sec/core: 40.3, ETA: 1.37h
+I0103 22:25:00.246672 140262765472832 logging_writer.py:35] [60] img_sec_core_train=39.702717, train_loss=0.341370
+I0103 22:25:00.249226 140262765472832 train.py:201] Step: 60/3000 2.0%, img/sec/core: 39.7, ETA: 1.35h
+I0103 22:25:16.275529 140262765472832 logging_writer.py:35] [70] img_sec_core_train=39.914188, train_loss=0.354852
+I0103 22:25:16.277993 140262765472832 train.py:201] Step: 70/3000 2.3%, img/sec/core: 39.9, ETA: 1.34h
+I0103 22:25:32.306401 140262765472832 logging_writer.py:35] [80] img_sec_core_train=40.625501, train_loss=0.353960
+I0103 22:25:32.309166 140262765472832 train.py:201] Step: 80/3000 2.7%, img/sec/core: 40.6, ETA: 1.33h
+I0103 22:25:32.329948 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 2.7% (81/3000), ETA: 1h17m
+I0103 22:25:32.330525 140262765472832 logging_writer.py:35] [81] steps_per_sec=0.623879
+I0103 22:25:48.333364 140262765472832 logging_writer.py:35] [90] img_sec_core_train=39.261321, train_loss=0.340797
+I0103 22:25:48.335754 140262765472832 train.py:201] Step: 90/3000 3.0%, img/sec/core: 39.3, ETA: 1.32h
+I0103 22:26:04.363170 140262765472832 logging_writer.py:35] [100] img_sec_core_train=38.233335, train_loss=0.341063
+I0103 22:26:04.365887 140262765472832 train.py:201] Step: 100/3000 3.3%, img/sec/core: 38.2, ETA: 1.32h
+W0103 22:26:07.107848 140262765472832 pxla.py:1007] Compiling <unnamed wrapped function> (140243768003392) for 8 devices with args (ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072]), ShapedArray(float32[8,768,3072]), ShapedArray(float32[8,768]), ShapedArray(float32[8,3072,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,768]), ShapedArray(float32[8,12,64,768]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,12,64]), ShapedArray(float32[8,768,12,64]), ShapedArray(float32[8,1,577,768]), ShapedArray(float32[8,1,1,768]), ShapedArray(float32[8,768]), ShapedArray(float32[8,16,16,3,768]), ShapedArray(float32[8,2]), ShapedArray(float32[8,768,2]), ShapedArray(float32[8,64,384,384,3])). (num_replicas=8 num_partitions=1)
+W0103 22:26:14.400418 140262765472832 dispatch.py:197] Compiling _argmax (140243772293824) for args (ShapedArray(float32[8,64,2]),).
+W0103 22:26:14.903314 140262765472832 dispatch.py:197] Compiling <lambda> (140243772374976) for args (ShapedArray(int32[8,64]), ShapedArray(int32[8,64])).
+W0103 22:26:14.916212 140262765472832 dispatch.py:197] Compiling _mean (140243772616128) for args (ShapedArray(bool[8,64]),).
+W0103 22:26:19.508517 140262765472832 dispatch.py:197] Compiling clip (140245334426944) for args (ShapedArray(float32[], weak_type=True), ShapedArray(float32[], weak_type=True), ShapedArray(float32[], weak_type=True)).
+W0103 22:26:19.521662 140262765472832 dispatch.py:197] Compiling fn (140243770567552) for args (ShapedArray(float32[], weak_type=True), ShapedArray(float32[], weak_type=True)).
+W0103 22:26:19.531623 140262765472832 dispatch.py:197] Compiling <lambda> (140245385449216) for args (ShapedArray(float32[], weak_type=True),).
+W0103 22:26:19.542065 140262765472832 dispatch.py:197] Compiling fn (140243772033408) for args (ShapedArray(float32[], weak_type=True), ShapedArray(float32[], weak_type=True)).
+W0103 22:26:19.551748 140262765472832 dispatch.py:197] Compiling <lambda> (140243771991232) for args (ShapedArray(float32[], weak_type=True), ShapedArray(float32[], weak_type=True)).
+W0103 22:26:19.561115 140262765472832 dispatch.py:197] Compiling prim_fun (140243772443904) for args (ShapedArray(float32[], weak_type=True),).
+I0103 22:26:19.571094 140262765472832 train.py:225] Step: 100 Learning rate: 0.0075000, Test accuracy: 0.65410, img/sec/core: 42.3
+I0103 22:26:19.572382 140262765472832 logging_writer.py:35] [100] accuracy_test=0.654101550579071, img_sec_core_test=42.271632, lr=0.007500
+I0103 22:26:19.580737 140262765472832 checkpoints.py:120] Saving checkpoint at step: 100
+I0103 22:26:21.403340 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_100
+I0103 22:26:21.405296 140262765472832 train.py:248] Stored checkpoint at step 100 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_100"
+I0103 22:26:37.437088 140262765472832 logging_writer.py:35] [110] img_sec_core_train=177.028925, train_loss=0.329807
+I0103 22:26:37.439512 140262765472832 train.py:201] Step: 110/3000 3.7%, img/sec/core: 177.0, ETA: 1.43h
+I0103 22:26:37.501189 140262765472832 local.py:41] Setting work unit notes: 0.5 steps/s, 3.7% (111/3000), ETA: 1h44m
+I0103 22:26:37.503739 140262765472832 logging_writer.py:35] [111] steps_per_sec=0.460327
+I0103 22:26:53.477138 140262765472832 logging_writer.py:35] [120] img_sec_core_train=40.028463, train_loss=0.350341
+I0103 22:26:53.479644 140262765472832 train.py:201] Step: 120/3000 4.0%, img/sec/core: 40.0, ETA: 1.42h
+I0103 22:27:09.508018 140262765472832 logging_writer.py:35] [130] img_sec_core_train=39.948822, train_loss=0.342448
+I0103 22:27:09.510644 140262765472832 train.py:201] Step: 130/3000 4.3%, img/sec/core: 39.9, ETA: 1.40h
+I0103 22:27:25.560956 140262765472832 logging_writer.py:35] [140] img_sec_core_train=39.906856, train_loss=0.311989
+I0103 22:27:25.563579 140262765472832 train.py:201] Step: 140/3000 4.7%, img/sec/core: 39.9, ETA: 1.39h
+I0103 22:27:41.602526 140262765472832 logging_writer.py:35] [150] img_sec_core_train=39.720613, train_loss=0.291438
+I0103 22:27:41.605146 140262765472832 train.py:201] Step: 150/3000 5.0%, img/sec/core: 39.7, ETA: 1.38h
+I0103 22:27:41.669101 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 5.0% (151/3000), ETA: 1h16m
+I0103 22:27:41.671249 140262765472832 logging_writer.py:35] [151] steps_per_sec=0.623364
+I0103 22:27:57.637895 140262765472832 logging_writer.py:35] [160] img_sec_core_train=39.945099, train_loss=0.330539
+I0103 22:27:57.640892 140262765472832 train.py:201] Step: 160/3000 5.3%, img/sec/core: 39.9, ETA: 1.36h
+I0103 22:28:13.674723 140262765472832 logging_writer.py:35] [170] img_sec_core_train=40.007070, train_loss=0.279718
+I0103 22:28:13.678288 140262765472832 train.py:201] Step: 170/3000 5.7%, img/sec/core: 40.0, ETA: 1.35h
+I0103 22:28:29.800301 140262765472832 logging_writer.py:35] [180] img_sec_core_train=39.615799, train_loss=0.261018
+I0103 22:28:29.803237 140262765472832 train.py:201] Step: 180/3000 6.0%, img/sec/core: 39.6, ETA: 1.34h
+I0103 22:28:45.831702 140262765472832 logging_writer.py:35] [190] img_sec_core_train=39.833392, train_loss=0.289093
+I0103 22:28:45.834572 140262765472832 train.py:201] Step: 190/3000 6.3%, img/sec/core: 39.8, ETA: 1.34h
+I0103 22:28:45.907249 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 6.4% (191/3000), ETA: 1h15m
+I0103 22:28:45.911882 140262765472832 logging_writer.py:35] [191] steps_per_sec=0.622685
+I0103 22:29:01.877726 140262765472832 logging_writer.py:35] [200] img_sec_core_train=39.960961, train_loss=0.273088
+I0103 22:29:01.880664 140262765472832 train.py:201] Step: 200/3000 6.7%, img/sec/core: 40.0, ETA: 1.33h
+I0103 22:29:07.437502 140262765472832 train.py:225] Step: 200 Learning rate: 0.0150000, Test accuracy: 0.79395, img/sec/core: 115.2
+I0103 22:29:07.439448 140262765472832 logging_writer.py:35] [200] accuracy_test=0.7939453125, img_sec_core_test=115.237516, lr=0.015000
+I0103 22:29:07.448295 140262765472832 checkpoints.py:120] Saving checkpoint at step: 200
+I0103 22:29:09.333624 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_200
+I0103 22:29:09.334233 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_100
+I0103 22:29:09.387906 140262765472832 train.py:248] Stored checkpoint at step 200 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_200"
+I0103 22:29:25.428320 140262765472832 logging_writer.py:35] [210] img_sec_core_train=177.722216, train_loss=0.301286
+I0103 22:29:25.432180 140262765472832 train.py:201] Step: 210/3000 7.0%, img/sec/core: 177.7, ETA: 1.35h
+I0103 22:29:41.474596 140262765472832 logging_writer.py:35] [220] img_sec_core_train=39.624823, train_loss=0.228699
+I0103 22:29:41.477093 140262765472832 train.py:201] Step: 220/3000 7.3%, img/sec/core: 39.6, ETA: 1.34h
+I0103 22:29:57.512765 140262765472832 logging_writer.py:35] [230] img_sec_core_train=38.777301, train_loss=0.265535
+I0103 22:29:57.515855 140262765472832 train.py:201] Step: 230/3000 7.7%, img/sec/core: 38.8, ETA: 1.33h
+I0103 22:29:57.599753 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 7.7% (231/3000), ETA: 1h22m
+I0103 22:29:57.613557 140262765472832 logging_writer.py:35] [231] steps_per_sec=0.557941
+I0103 22:30:13.558743 140262765472832 logging_writer.py:35] [240] img_sec_core_train=40.806226, train_loss=0.221040
+I0103 22:30:13.561570 140262765472832 train.py:201] Step: 240/3000 8.0%, img/sec/core: 40.8, ETA: 1.32h
+I0103 22:30:29.680838 140262765472832 logging_writer.py:35] [250] img_sec_core_train=39.983924, train_loss=0.219099
+I0103 22:30:29.683270 140262765472832 train.py:201] Step: 250/3000 8.3%, img/sec/core: 40.0, ETA: 1.31h
+I0103 22:30:45.720502 140262765472832 logging_writer.py:35] [260] img_sec_core_train=40.094777, train_loss=0.233412
+I0103 22:30:45.723427 140262765472832 train.py:201] Step: 260/3000 8.7%, img/sec/core: 40.1, ETA: 1.30h
+I0103 22:31:01.751502 140262765472832 logging_writer.py:35] [270] img_sec_core_train=39.626200, train_loss=0.197597
+I0103 22:31:01.754704 140262765472832 train.py:201] Step: 270/3000 9.0%, img/sec/core: 39.6, ETA: 1.29h
+I0103 22:31:01.820504 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 9.0% (271/3000), ETA: 1h13m
+I0103 22:31:01.822780 140262765472832 logging_writer.py:35] [271] steps_per_sec=0.622848
+I0103 22:31:17.791684 140262765472832 logging_writer.py:35] [280] img_sec_core_train=40.084352, train_loss=0.177811
+I0103 22:31:17.794846 140262765472832 train.py:201] Step: 280/3000 9.3%, img/sec/core: 40.1, ETA: 1.29h
+I0103 22:31:33.824009 140262765472832 logging_writer.py:35] [290] img_sec_core_train=39.927225, train_loss=0.148762
+I0103 22:31:33.827168 140262765472832 train.py:201] Step: 290/3000 9.7%, img/sec/core: 39.9, ETA: 1.28h
+I0103 22:31:49.863774 140262765472832 logging_writer.py:35] [300] img_sec_core_train=39.848941, train_loss=0.308972
+I0103 22:31:49.867963 140262765472832 train.py:201] Step: 300/3000 10.0%, img/sec/core: 39.8, ETA: 1.27h
+I0103 22:31:55.351382 140262765472832 train.py:225] Step: 300 Learning rate: 0.0225000, Test accuracy: 0.77383, img/sec/core: 116.8
+I0103 22:31:55.353291 140262765472832 logging_writer.py:35] [300] accuracy_test=0.7738281488418579, img_sec_core_test=116.797147, lr=0.022500
+I0103 22:31:55.362159 140262765472832 checkpoints.py:120] Saving checkpoint at step: 300
+I0103 22:31:57.080282 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_300
+I0103 22:31:57.080886 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_200
+I0103 22:31:57.140320 140262765472832 train.py:248] Stored checkpoint at step 300 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_300"
+I0103 22:32:13.179273 140262765472832 logging_writer.py:35] [310] img_sec_core_train=185.929694, train_loss=0.147509
+I0103 22:32:13.181898 140262765472832 train.py:201] Step: 310/3000 10.3%, img/sec/core: 185.9, ETA: 1.28h
+I0103 22:32:13.241010 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 10.4% (311/3000), ETA: 1h20m
+I0103 22:32:13.242812 140262765472832 logging_writer.py:35] [311] steps_per_sec=0.560062
+I0103 22:32:29.222008 140262765472832 logging_writer.py:35] [320] img_sec_core_train=39.705099, train_loss=0.462211
+I0103 22:32:29.224428 140262765472832 train.py:201] Step: 320/3000 10.7%, img/sec/core: 39.7, ETA: 1.28h
+I0103 22:32:45.256187 140262765472832 logging_writer.py:35] [330] img_sec_core_train=39.629869, train_loss=0.177571
+I0103 22:32:45.259313 140262765472832 train.py:201] Step: 330/3000 11.0%, img/sec/core: 39.6, ETA: 1.27h
+I0103 22:33:01.304911 140262765472832 logging_writer.py:35] [340] img_sec_core_train=40.344945, train_loss=0.211565
+I0103 22:33:01.307901 140262765472832 train.py:201] Step: 340/3000 11.3%, img/sec/core: 40.3, ETA: 1.26h
+I0103 22:33:17.355816 140262765472832 logging_writer.py:35] [350] img_sec_core_train=39.179640, train_loss=0.212807
+I0103 22:33:17.358975 140262765472832 train.py:201] Step: 350/3000 11.7%, img/sec/core: 39.2, ETA: 1.25h
+I0103 22:33:17.437704 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 11.7% (351/3000), ETA: 1h10m
+I0103 22:33:17.446957 140262765472832 logging_writer.py:35] [351] steps_per_sec=0.623114
+I0103 22:33:33.401640 140262765472832 logging_writer.py:35] [360] img_sec_core_train=40.628395, train_loss=0.198424
+I0103 22:33:33.404628 140262765472832 train.py:201] Step: 360/3000 12.0%, img/sec/core: 40.6, ETA: 1.25h
+I0103 22:33:49.434035 140262765472832 logging_writer.py:35] [370] img_sec_core_train=38.420049, train_loss=0.181489
+I0103 22:33:49.436794 140262765472832 train.py:201] Step: 370/3000 12.3%, img/sec/core: 38.4, ETA: 1.24h
+I0103 22:34:05.470518 140262765472832 logging_writer.py:35] [380] img_sec_core_train=40.115476, train_loss=0.213786
+I0103 22:34:05.472986 140262765472832 train.py:201] Step: 380/3000 12.7%, img/sec/core: 40.1, ETA: 1.23h
+I0103 22:34:21.499333 140262765472832 logging_writer.py:35] [390] img_sec_core_train=41.722303, train_loss=0.228511
+I0103 22:34:21.503183 140262765472832 train.py:201] Step: 390/3000 13.0%, img/sec/core: 41.7, ETA: 1.23h
+I0103 22:34:21.562302 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 13.0% (391/3000), ETA: 1h9m
+I0103 22:34:21.563817 140262765472832 logging_writer.py:35] [391] steps_per_sec=0.623759
+I0103 22:34:37.536655 140262765472832 logging_writer.py:35] [400] img_sec_core_train=39.836406, train_loss=0.231396
+I0103 22:34:37.539077 140262765472832 train.py:201] Step: 400/3000 13.3%, img/sec/core: 39.8, ETA: 1.22h
+I0103 22:34:42.989569 140262765472832 train.py:225] Step: 400 Learning rate: 0.0300000, Test accuracy: 0.85098, img/sec/core: 117.5
+I0103 22:34:42.991308 140262765472832 logging_writer.py:35] [400] accuracy_test=0.8509765863418579, img_sec_core_test=117.508722, lr=0.030000
+I0103 22:34:42.999857 140262765472832 checkpoints.py:120] Saving checkpoint at step: 400
+I0103 22:34:44.740926 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_400
+I0103 22:34:44.741404 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_300
+I0103 22:34:44.802519 140262765472832 train.py:248] Stored checkpoint at step 400 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_400"
+I0103 22:35:00.827649 140262765472832 logging_writer.py:35] [410] img_sec_core_train=199.659475, train_loss=0.180559
+I0103 22:35:00.830008 140262765472832 train.py:201] Step: 410/3000 13.7%, img/sec/core: 199.7, ETA: 1.23h
+I0103 22:35:16.863746 140262765472832 logging_writer.py:35] [420] img_sec_core_train=39.824019, train_loss=0.159524
+I0103 22:35:16.869220 140262765472832 train.py:201] Step: 420/3000 14.0%, img/sec/core: 39.8, ETA: 1.22h
+I0103 22:35:32.893660 140262765472832 logging_writer.py:35] [430] img_sec_core_train=39.761086, train_loss=0.147948
+I0103 22:35:32.896853 140262765472832 train.py:201] Step: 430/3000 14.3%, img/sec/core: 39.8, ETA: 1.22h
+I0103 22:35:33.498671 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 14.4% (431/3000), ETA: 1h17m
+I0103 22:35:33.499783 140262765472832 logging_writer.py:35] [431] steps_per_sec=0.556045
+I0103 22:35:48.926555 140262765472832 logging_writer.py:35] [440] img_sec_core_train=38.651508, train_loss=0.223979
+I0103 22:35:48.930464 140262765472832 train.py:201] Step: 440/3000 14.7%, img/sec/core: 38.7, ETA: 1.21h
+I0103 22:36:04.968607 140262765472832 logging_writer.py:35] [450] img_sec_core_train=41.172552, train_loss=0.170189
+I0103 22:36:04.971503 140262765472832 train.py:201] Step: 450/3000 15.0%, img/sec/core: 41.2, ETA: 1.20h
+I0103 22:36:21.010524 140262765472832 logging_writer.py:35] [460] img_sec_core_train=39.570996, train_loss=0.146203
+I0103 22:36:21.015233 140262765472832 train.py:201] Step: 460/3000 15.3%, img/sec/core: 39.6, ETA: 1.20h
+I0103 22:36:37.037311 140262765472832 logging_writer.py:35] [470] img_sec_core_train=40.567534, train_loss=0.194526
+I0103 22:36:37.039591 140262765472832 train.py:201] Step: 470/3000 15.7%, img/sec/core: 40.6, ETA: 1.19h
+I0103 22:36:37.068586 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 15.7% (471/3000), ETA: 1h6m
+I0103 22:36:37.070488 140262765472832 logging_writer.py:35] [471] steps_per_sec=0.629229
+I0103 22:36:53.060967 140262765472832 logging_writer.py:35] [480] img_sec_core_train=39.909313, train_loss=0.113530
+I0103 22:36:53.063875 140262765472832 train.py:201] Step: 480/3000 16.0%, img/sec/core: 39.9, ETA: 1.18h
+I0103 22:37:09.112046 140262765472832 logging_writer.py:35] [490] img_sec_core_train=40.043788, train_loss=0.193000
+I0103 22:37:09.114660 140262765472832 train.py:201] Step: 490/3000 16.3%, img/sec/core: 40.0, ETA: 1.18h
+I0103 22:37:25.143024 140262765472832 logging_writer.py:35] [500] img_sec_core_train=39.879247, train_loss=0.213337
+I0103 22:37:25.146141 140262765472832 train.py:201] Step: 500/3000 16.7%, img/sec/core: 39.9, ETA: 1.17h
+I0103 22:37:30.607987 140262765472832 train.py:225] Step: 500 Learning rate: 0.0298906, Test accuracy: 0.85859, img/sec/core: 117.3
+I0103 22:37:30.610191 140262765472832 logging_writer.py:35] [500] accuracy_test=0.858593761920929, img_sec_core_test=117.260909, lr=0.029891
+I0103 22:37:30.619310 140262765472832 checkpoints.py:120] Saving checkpoint at step: 500
+I0103 22:37:32.387804 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_500
+I0103 22:37:32.388501 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_400
+I0103 22:37:32.453053 140262765472832 train.py:248] Stored checkpoint at step 500 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_500"
+I0103 22:37:48.482954 140262765472832 logging_writer.py:35] [510] img_sec_core_train=186.979748, train_loss=0.120089
+I0103 22:37:48.485373 140262765472832 train.py:201] Step: 510/3000 17.0%, img/sec/core: 187.0, ETA: 1.18h
+I0103 22:37:48.513798 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 17.0% (511/3000), ETA: 1h14m
+I0103 22:37:48.514888 140262765472832 logging_writer.py:35] [511] steps_per_sec=0.559870
+I0103 22:38:04.507486 140262765472832 logging_writer.py:35] [520] img_sec_core_train=39.388391, train_loss=0.135382
+I0103 22:38:04.510457 140262765472832 train.py:201] Step: 520/3000 17.3%, img/sec/core: 39.4, ETA: 1.17h
+I0103 22:38:20.540210 140262765472832 logging_writer.py:35] [530] img_sec_core_train=40.863411, train_loss=0.154370
+I0103 22:38:20.542641 140262765472832 train.py:201] Step: 530/3000 17.7%, img/sec/core: 40.9, ETA: 1.16h
+I0103 22:38:36.567303 140262765472832 logging_writer.py:35] [540] img_sec_core_train=40.024994, train_loss=0.122141
+I0103 22:38:36.569710 140262765472832 train.py:201] Step: 540/3000 18.0%, img/sec/core: 40.0, ETA: 1.16h
+I0103 22:38:52.595166 140262765472832 logging_writer.py:35] [550] img_sec_core_train=40.026899, train_loss=0.192279
+I0103 22:38:52.597501 140262765472832 train.py:201] Step: 550/3000 18.3%, img/sec/core: 40.0, ETA: 1.15h
+I0103 22:38:52.666823 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 18.4% (551/3000), ETA: 1h5m
+I0103 22:38:52.672934 140262765472832 logging_writer.py:35] [551] steps_per_sec=0.623510
+I0103 22:39:08.635038 140262765472832 logging_writer.py:35] [560] img_sec_core_train=39.939934, train_loss=0.118991
+I0103 22:39:08.637561 140262765472832 train.py:201] Step: 560/3000 18.7%, img/sec/core: 39.9, ETA: 1.15h
+I0103 22:39:24.664595 140262765472832 logging_writer.py:35] [570] img_sec_core_train=39.903642, train_loss=0.112446
+I0103 22:39:24.667250 140262765472832 train.py:201] Step: 570/3000 19.0%, img/sec/core: 39.9, ETA: 1.14h
+I0103 22:39:40.702412 140262765472832 logging_writer.py:35] [580] img_sec_core_train=39.987800, train_loss=0.105754
+I0103 22:39:40.705878 140262765472832 train.py:201] Step: 580/3000 19.3%, img/sec/core: 40.0, ETA: 1.14h
+I0103 22:39:56.765080 140262765472832 logging_writer.py:35] [590] img_sec_core_train=39.966647, train_loss=0.118217
+I0103 22:39:56.768525 140262765472832 train.py:201] Step: 590/3000 19.7%, img/sec/core: 40.0, ETA: 1.13h
+I0103 22:39:56.818843 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 19.7% (591/3000), ETA: 1h4m
+I0103 22:39:56.821359 140262765472832 logging_writer.py:35] [591] steps_per_sec=0.623518
+I0103 22:40:12.812675 140262765472832 logging_writer.py:35] [600] img_sec_core_train=39.752364, train_loss=0.128825
+I0103 22:40:12.815107 140262765472832 train.py:201] Step: 600/3000 20.0%, img/sec/core: 39.8, ETA: 1.12h
+I0103 22:40:18.292935 140262765472832 train.py:225] Step: 600 Learning rate: 0.0295641, Test accuracy: 0.92813, img/sec/core: 116.9
+I0103 22:40:18.294480 140262765472832 logging_writer.py:35] [600] accuracy_test=0.9281250238418579, img_sec_core_test=116.905064, lr=0.029564
+I0103 22:40:18.302885 140262765472832 checkpoints.py:120] Saving checkpoint at step: 600
+I0103 22:40:20.058054 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_600
+I0103 22:40:20.058586 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_500
+I0103 22:40:20.123447 140262765472832 train.py:248] Stored checkpoint at step 600 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_600"
+I0103 22:40:36.160594 140262765472832 logging_writer.py:35] [610] img_sec_core_train=200.942746, train_loss=0.176448
+I0103 22:40:36.163081 140262765472832 train.py:201] Step: 610/3000 20.3%, img/sec/core: 200.9, ETA: 1.13h
+I0103 22:40:52.197515 140262765472832 logging_writer.py:35] [620] img_sec_core_train=40.012500, train_loss=0.130287
+I0103 22:40:52.199830 140262765472832 train.py:201] Step: 620/3000 20.7%, img/sec/core: 40.0, ETA: 1.12h
+I0103 22:41:08.227415 140262765472832 logging_writer.py:35] [630] img_sec_core_train=39.958637, train_loss=0.143914
+I0103 22:41:08.230109 140262765472832 train.py:201] Step: 630/3000 21.0%, img/sec/core: 40.0, ETA: 1.12h
+I0103 22:41:08.264219 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 21.0% (631/3000), ETA: 1h10m
+I0103 22:41:08.265813 140262765472832 logging_writer.py:35] [631] steps_per_sec=0.559873
+I0103 22:41:24.254194 140262765472832 logging_writer.py:35] [640] img_sec_core_train=39.903578, train_loss=0.112130
+I0103 22:41:24.257331 140262765472832 train.py:201] Step: 640/3000 21.3%, img/sec/core: 39.9, ETA: 1.11h
+I0103 22:41:40.290550 140262765472832 logging_writer.py:35] [650] img_sec_core_train=39.998772, train_loss=0.113857
+I0103 22:41:40.293118 140262765472832 train.py:201] Step: 650/3000 21.7%, img/sec/core: 40.0, ETA: 1.10h
+I0103 22:41:56.331485 140262765472832 logging_writer.py:35] [660] img_sec_core_train=39.772770, train_loss=0.111392
+I0103 22:41:56.334641 140262765472832 train.py:201] Step: 660/3000 22.0%, img/sec/core: 39.8, ETA: 1.10h
+I0103 22:42:12.367834 140262765472832 logging_writer.py:35] [670] img_sec_core_train=40.012858, train_loss=0.129745
+I0103 22:42:12.370270 140262765472832 train.py:201] Step: 670/3000 22.3%, img/sec/core: 40.0, ETA: 1.09h
+I0103 22:42:12.421843 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 22.4% (671/3000), ETA: 1h2m
+I0103 22:42:12.427599 140262765472832 logging_writer.py:35] [671] steps_per_sec=0.623485
+I0103 22:42:28.401327 140262765472832 logging_writer.py:35] [680] img_sec_core_train=39.984394, train_loss=0.179727
+I0103 22:42:28.403871 140262765472832 train.py:201] Step: 680/3000 22.7%, img/sec/core: 40.0, ETA: 1.09h
+I0103 22:42:44.433484 140262765472832 logging_writer.py:35] [690] img_sec_core_train=39.807784, train_loss=0.141401
+I0103 22:42:44.437012 140262765472832 train.py:201] Step: 690/3000 23.0%, img/sec/core: 39.8, ETA: 1.08h
+I0103 22:43:00.468852 140262765472832 logging_writer.py:35] [700] img_sec_core_train=40.018133, train_loss=0.128404
+I0103 22:43:00.472275 140262765472832 train.py:201] Step: 700/3000 23.3%, img/sec/core: 40.0, ETA: 1.08h
+I0103 22:43:05.862025 140262765472832 train.py:225] Step: 700 Learning rate: 0.0290252, Test accuracy: 0.92773, img/sec/core: 118.8
+I0103 22:43:05.863776 140262765472832 logging_writer.py:35] [700] accuracy_test=0.927734375, img_sec_core_test=118.816517, lr=0.029025
+I0103 22:43:05.872619 140262765472832 checkpoints.py:120] Saving checkpoint at step: 700
+I0103 22:43:07.747282 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_700
+I0103 22:43:07.747846 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_600
+I0103 22:43:07.812976 140262765472832 train.py:248] Stored checkpoint at step 700 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_700"
+I0103 22:43:23.835431 140262765472832 logging_writer.py:35] [710] img_sec_core_train=195.654105, train_loss=0.128665
+I0103 22:43:23.837885 140262765472832 train.py:201] Step: 710/3000 23.7%, img/sec/core: 195.7, ETA: 1.08h
+I0103 22:43:23.903663 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 23.7% (711/3000), ETA: 1h8m
+I0103 22:43:23.907561 140262765472832 logging_writer.py:35] [711] steps_per_sec=0.559564
+I0103 22:43:39.890895 140262765472832 logging_writer.py:35] [720] img_sec_core_train=39.951678, train_loss=0.088843
+I0103 22:43:39.893276 140262765472832 train.py:201] Step: 720/3000 24.0%, img/sec/core: 40.0, ETA: 1.07h
+I0103 22:43:55.921306 140262765472832 logging_writer.py:35] [730] img_sec_core_train=39.974545, train_loss=0.178722
+I0103 22:43:55.923977 140262765472832 train.py:201] Step: 730/3000 24.3%, img/sec/core: 40.0, ETA: 1.07h
+I0103 22:44:11.946416 140262765472832 logging_writer.py:35] [740] img_sec_core_train=39.921678, train_loss=0.244916
+I0103 22:44:11.948771 140262765472832 train.py:201] Step: 740/3000 24.7%, img/sec/core: 39.9, ETA: 1.06h
+I0103 22:44:27.987612 140262765472832 logging_writer.py:35] [750] img_sec_core_train=39.995854, train_loss=0.146570
+I0103 22:44:27.990406 140262765472832 train.py:201] Step: 750/3000 25.0%, img/sec/core: 40.0, ETA: 1.06h
+I0103 22:44:28.047586 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 25.0% (751/3000), ETA: 1h0m
+I0103 22:44:28.060819 140262765472832 logging_writer.py:35] [751] steps_per_sec=0.623599
+I0103 22:44:44.013879 140262765472832 logging_writer.py:35] [760] img_sec_core_train=39.887567, train_loss=0.104248
+I0103 22:44:44.016453 140262765472832 train.py:201] Step: 760/3000 25.3%, img/sec/core: 39.9, ETA: 1.05h
+I0103 22:45:00.074384 140262765472832 logging_writer.py:35] [770] img_sec_core_train=39.893900, train_loss=0.146510
+I0103 22:45:00.077211 140262765472832 train.py:201] Step: 770/3000 25.7%, img/sec/core: 39.9, ETA: 1.05h
+I0103 22:45:16.105459 140262765472832 logging_writer.py:35] [780] img_sec_core_train=39.849785, train_loss=0.134229
+I0103 22:45:16.107868 140262765472832 train.py:201] Step: 780/3000 26.0%, img/sec/core: 39.8, ETA: 1.04h
+I0103 22:45:32.138251 140262765472832 logging_writer.py:35] [790] img_sec_core_train=39.862481, train_loss=0.115683
+I0103 22:45:32.140771 140262765472832 train.py:201] Step: 790/3000 26.3%, img/sec/core: 39.9, ETA: 1.03h
+I0103 22:45:32.195891 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 26.4% (791/3000), ETA: 59m
+I0103 22:45:32.200853 140262765472832 logging_writer.py:35] [791] steps_per_sec=0.623553
+I0103 22:45:48.178847 140262765472832 logging_writer.py:35] [800] img_sec_core_train=39.994852, train_loss=0.104995
+I0103 22:45:48.181844 140262765472832 train.py:201] Step: 800/3000 26.7%, img/sec/core: 40.0, ETA: 1.03h
+I0103 22:45:53.588715 140262765472832 train.py:225] Step: 800 Learning rate: 0.0282818, Test accuracy: 0.96582, img/sec/core: 118.4
+I0103 22:45:53.590070 140262765472832 logging_writer.py:35] [800] accuracy_test=0.9658203125, img_sec_core_test=118.426575, lr=0.028282
+I0103 22:45:53.598746 140262765472832 checkpoints.py:120] Saving checkpoint at step: 800
+I0103 22:45:55.415513 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_800
+I0103 22:45:55.416107 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_700
+I0103 22:45:55.479720 140262765472832 train.py:248] Stored checkpoint at step 800 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_800"
+I0103 22:46:11.513333 140262765472832 logging_writer.py:35] [810] img_sec_core_train=197.946667, train_loss=0.124002
+I0103 22:46:11.517923 140262765472832 train.py:201] Step: 810/3000 27.0%, img/sec/core: 197.9, ETA: 1.03h
+I0103 22:46:27.578818 140262765472832 logging_writer.py:35] [820] img_sec_core_train=40.073922, train_loss=0.136672
+I0103 22:46:27.581175 140262765472832 train.py:201] Step: 820/3000 27.3%, img/sec/core: 40.1, ETA: 1.02h
+I0103 22:46:43.603808 140262765472832 logging_writer.py:35] [830] img_sec_core_train=39.876467, train_loss=0.089648
+I0103 22:46:43.606350 140262765472832 train.py:201] Step: 830/3000 27.7%, img/sec/core: 39.9, ETA: 1.02h
+I0103 22:46:43.648596 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 27.7% (831/3000), ETA: 1h4m
+I0103 22:46:43.649832 140262765472832 logging_writer.py:35] [831] steps_per_sec=0.559809
+I0103 22:46:59.634412 140262765472832 logging_writer.py:35] [840] img_sec_core_train=39.106083, train_loss=0.098882
+I0103 22:46:59.637416 140262765472832 train.py:201] Step: 840/3000 28.0%, img/sec/core: 39.1, ETA: 1.01h
+I0103 22:47:15.709454 140262765472832 logging_writer.py:35] [850] img_sec_core_train=39.708672, train_loss=0.089486
+I0103 22:47:15.712030 140262765472832 train.py:201] Step: 850/3000 28.3%, img/sec/core: 39.7, ETA: 1.01h
+I0103 22:47:31.739979 140262765472832 logging_writer.py:35] [860] img_sec_core_train=40.791214, train_loss=0.158326
+I0103 22:47:31.742614 140262765472832 train.py:201] Step: 860/3000 28.7%, img/sec/core: 40.8, ETA: 1.00h
+I0103 22:47:47.771592 140262765472832 logging_writer.py:35] [870] img_sec_core_train=39.569912, train_loss=0.093394
+I0103 22:47:47.774830 140262765472832 train.py:201] Step: 870/3000 29.0%, img/sec/core: 39.6, ETA: 1.00h
+I0103 22:47:47.822210 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 29.0% (871/3000), ETA: 56m
+I0103 22:47:47.829965 140262765472832 logging_writer.py:35] [871] steps_per_sec=0.623309
+I0103 22:48:03.824962 140262765472832 logging_writer.py:35] [880] img_sec_core_train=40.592769, train_loss=0.114583
+I0103 22:48:03.827305 140262765472832 train.py:201] Step: 880/3000 29.3%, img/sec/core: 40.6, ETA: 0.99h
+I0103 22:48:19.855305 140262765472832 logging_writer.py:35] [890] img_sec_core_train=39.838990, train_loss=0.172299
+I0103 22:48:19.857655 140262765472832 train.py:201] Step: 890/3000 29.7%, img/sec/core: 39.8, ETA: 0.99h
+I0103 22:48:35.886232 140262765472832 logging_writer.py:35] [900] img_sec_core_train=39.899954, train_loss=0.115257
+I0103 22:48:35.888754 140262765472832 train.py:201] Step: 900/3000 30.0%, img/sec/core: 39.9, ETA: 0.98h
+I0103 22:48:41.314002 140262765472832 train.py:225] Step: 900 Learning rate: 0.0273448, Test accuracy: 0.96367, img/sec/core: 118.0
+I0103 22:48:41.315648 140262765472832 logging_writer.py:35] [900] accuracy_test=0.963671863079071, img_sec_core_test=118.043616, lr=0.027345
+I0103 22:48:41.324248 140262765472832 checkpoints.py:120] Saving checkpoint at step: 900
+I0103 22:48:42.986025 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_900
+I0103 22:48:42.986800 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_800
+I0103 22:48:43.052142 140262765472832 train.py:248] Stored checkpoint at step 900 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_900"
+I0103 22:48:59.076060 140262765472832 logging_writer.py:35] [910] img_sec_core_train=217.137591, train_loss=0.127412
+I0103 22:48:59.078406 140262765472832 train.py:201] Step: 910/3000 30.3%, img/sec/core: 217.1, ETA: 0.98h
+I0103 22:48:59.118251 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 30.4% (911/3000), ETA: 1h2m
+I0103 22:48:59.119038 140262765472832 logging_writer.py:35] [911] steps_per_sec=0.561041
+I0103 22:49:15.101411 140262765472832 logging_writer.py:35] [920] img_sec_core_train=39.904712, train_loss=0.067136
+I0103 22:49:15.104408 140262765472832 train.py:201] Step: 920/3000 30.7%, img/sec/core: 39.9, ETA: 0.98h
+I0103 22:49:31.127189 140262765472832 logging_writer.py:35] [930] img_sec_core_train=39.922680, train_loss=0.075603
+I0103 22:49:31.132513 140262765472832 train.py:201] Step: 930/3000 31.0%, img/sec/core: 39.9, ETA: 0.97h
+I0103 22:49:47.158089 140262765472832 logging_writer.py:35] [940] img_sec_core_train=39.805762, train_loss=0.089257
+I0103 22:49:47.160539 140262765472832 train.py:201] Step: 940/3000 31.3%, img/sec/core: 39.8, ETA: 0.97h
+I0103 22:50:03.181190 140262765472832 logging_writer.py:35] [950] img_sec_core_train=40.055755, train_loss=0.099616
+I0103 22:50:03.183603 140262765472832 train.py:201] Step: 950/3000 31.7%, img/sec/core: 40.1, ETA: 0.96h
+I0103 22:50:03.223835 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 31.7% (951/3000), ETA: 54m
+I0103 22:50:03.226129 140262765472832 logging_writer.py:35] [951] steps_per_sec=0.623971
+I0103 22:50:19.211189 140262765472832 logging_writer.py:35] [960] img_sec_core_train=40.063049, train_loss=0.177342
+I0103 22:50:19.213508 140262765472832 train.py:201] Step: 960/3000 32.0%, img/sec/core: 40.1, ETA: 0.96h
+I0103 22:50:35.237015 140262765472832 logging_writer.py:35] [970] img_sec_core_train=39.822561, train_loss=0.087073
+I0103 22:50:35.239360 140262765472832 train.py:201] Step: 970/3000 32.3%, img/sec/core: 39.8, ETA: 0.95h
+I0103 22:50:51.258791 140262765472832 logging_writer.py:35] [980] img_sec_core_train=39.767590, train_loss=0.088705
+I0103 22:50:51.261134 140262765472832 train.py:201] Step: 980/3000 32.7%, img/sec/core: 39.8, ETA: 0.94h
+I0103 22:51:07.306816 140262765472832 logging_writer.py:35] [990] img_sec_core_train=39.752822, train_loss=0.104570
+I0103 22:51:07.309310 140262765472832 train.py:201] Step: 990/3000 33.0%, img/sec/core: 39.8, ETA: 0.94h
+I0103 22:51:07.343345 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 33.0% (991/3000), ETA: 53m
+I0103 22:51:07.346402 140262765472832 logging_writer.py:35] [991] steps_per_sec=0.623834
+I0103 22:51:23.335053 140262765472832 logging_writer.py:35] [1000] img_sec_core_train=40.156239, train_loss=0.098432
+I0103 22:51:23.337364 140262765472832 train.py:201] Step: 1000/3000 33.3%, img/sec/core: 40.2, ETA: 0.93h
+I0103 22:51:28.761968 140262765472832 train.py:225] Step: 1000 Learning rate: 0.0262277, Test accuracy: 0.94199, img/sec/core: 118.1
+I0103 22:51:28.764221 140262765472832 logging_writer.py:35] [1000] accuracy_test=0.9419921636581421, img_sec_core_test=118.055837, lr=0.026228
+I0103 22:51:28.774430 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1000
+I0103 22:51:30.520044 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1000
+I0103 22:51:30.520589 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_900
+I0103 22:51:30.586437 140262765472832 train.py:248] Stored checkpoint at step 1000 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1000"
+I0103 22:51:46.614219 140262765472832 logging_writer.py:35] [1010] img_sec_core_train=209.805187, train_loss=0.084692
+I0103 22:51:46.616960 140262765472832 train.py:201] Step: 1010/3000 33.7%, img/sec/core: 209.8, ETA: 0.93h
+I0103 22:52:02.640613 140262765472832 logging_writer.py:35] [1020] img_sec_core_train=39.939342, train_loss=0.108843
+I0103 22:52:02.643110 140262765472832 train.py:201] Step: 1020/3000 34.0%, img/sec/core: 39.9, ETA: 0.93h
+I0103 22:52:18.687453 140262765472832 logging_writer.py:35] [1030] img_sec_core_train=39.856888, train_loss=0.099912
+I0103 22:52:18.689797 140262765472832 train.py:201] Step: 1030/3000 34.3%, img/sec/core: 39.9, ETA: 0.92h
+I0103 22:52:18.729338 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 34.4% (1031/3000), ETA: 58m
+I0103 22:52:18.730990 140262765472832 logging_writer.py:35] [1031] steps_per_sec=0.560336
+I0103 22:52:34.719821 140262765472832 logging_writer.py:35] [1040] img_sec_core_train=38.906119, train_loss=0.072343
+I0103 22:52:34.722503 140262765472832 train.py:201] Step: 1040/3000 34.7%, img/sec/core: 38.9, ETA: 0.92h
+I0103 22:52:50.792965 140262765472832 logging_writer.py:35] [1050] img_sec_core_train=40.949794, train_loss=0.070524
+I0103 22:52:50.795309 140262765472832 train.py:201] Step: 1050/3000 35.0%, img/sec/core: 40.9, ETA: 0.91h
+I0103 22:53:06.823238 140262765472832 logging_writer.py:35] [1060] img_sec_core_train=39.940550, train_loss=0.084174
+I0103 22:53:06.825589 140262765472832 train.py:201] Step: 1060/3000 35.3%, img/sec/core: 39.9, ETA: 0.91h
+I0103 22:53:22.848924 140262765472832 logging_writer.py:35] [1070] img_sec_core_train=39.883663, train_loss=0.086799
+I0103 22:53:22.861237 140262765472832 train.py:201] Step: 1070/3000 35.7%, img/sec/core: 39.9, ETA: 0.90h
+I0103 22:53:22.903832 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 35.7% (1071/3000), ETA: 51m
+I0103 22:53:22.912641 140262765472832 logging_writer.py:35] [1071] steps_per_sec=0.623299
+I0103 22:53:38.891261 140262765472832 logging_writer.py:35] [1080] img_sec_core_train=39.838044, train_loss=0.117426
+I0103 22:53:38.893809 140262765472832 train.py:201] Step: 1080/3000 36.0%, img/sec/core: 39.8, ETA: 0.90h
+I0103 22:53:54.923281 140262765472832 logging_writer.py:35] [1090] img_sec_core_train=39.982691, train_loss=0.081788
+I0103 22:53:54.929802 140262765472832 train.py:201] Step: 1090/3000 36.3%, img/sec/core: 40.0, ETA: 0.89h
+I0103 22:54:10.980858 140262765472832 logging_writer.py:35] [1100] img_sec_core_train=39.842984, train_loss=0.104885
+I0103 22:54:10.983236 140262765472832 train.py:201] Step: 1100/3000 36.7%, img/sec/core: 39.8, ETA: 0.89h
+I0103 22:54:16.350182 140262765472832 train.py:225] Step: 1100 Learning rate: 0.0249468, Test accuracy: 0.95918, img/sec/core: 119.3
+I0103 22:54:16.351488 140262765472832 logging_writer.py:35] [1100] accuracy_test=0.959179699420929, img_sec_core_test=119.315343, lr=0.024947
+I0103 22:54:16.360522 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1100
+I0103 22:54:18.062819 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1100
+I0103 22:54:18.063376 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1000
+I0103 22:54:18.128986 140262765472832 train.py:248] Stored checkpoint at step 1100 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1100"
+I0103 22:54:34.170601 140262765472832 logging_writer.py:35] [1110] img_sec_core_train=213.262116, train_loss=0.079247
+I0103 22:54:34.174348 140262765472832 train.py:201] Step: 1110/3000 37.0%, img/sec/core: 213.3, ETA: 0.89h
+I0103 22:54:34.203989 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 37.0% (1111/3000), ETA: 56m
+I0103 22:54:34.205789 140262765472832 logging_writer.py:35] [1111] steps_per_sec=0.561009
+I0103 22:54:50.195438 140262765472832 logging_writer.py:35] [1120] img_sec_core_train=39.981345, train_loss=0.103295
+I0103 22:54:50.197807 140262765472832 train.py:201] Step: 1120/3000 37.3%, img/sec/core: 40.0, ETA: 0.88h
+I0103 22:55:06.230683 140262765472832 logging_writer.py:35] [1130] img_sec_core_train=39.881498, train_loss=0.106337
+I0103 22:55:06.233241 140262765472832 train.py:201] Step: 1130/3000 37.7%, img/sec/core: 39.9, ETA: 0.88h
+I0103 22:55:22.265877 140262765472832 logging_writer.py:35] [1140] img_sec_core_train=39.839935, train_loss=0.131988
+I0103 22:55:22.268179 140262765472832 train.py:201] Step: 1140/3000 38.0%, img/sec/core: 39.8, ETA: 0.87h
+I0103 22:55:38.306505 140262765472832 logging_writer.py:35] [1150] img_sec_core_train=40.023980, train_loss=0.095134
+I0103 22:55:38.309007 140262765472832 train.py:201] Step: 1150/3000 38.3%, img/sec/core: 40.0, ETA: 0.87h
+I0103 22:55:38.349890 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 38.4% (1151/3000), ETA: 49m
+I0103 22:55:38.350892 140262765472832 logging_writer.py:35] [1151] steps_per_sec=0.623579
+I0103 22:55:54.337352 140262765472832 logging_writer.py:35] [1160] img_sec_core_train=39.808913, train_loss=0.088407
+I0103 22:55:54.339587 140262765472832 train.py:201] Step: 1160/3000 38.7%, img/sec/core: 39.8, ETA: 0.86h
+I0103 22:56:10.368194 140262765472832 logging_writer.py:35] [1170] img_sec_core_train=39.788880, train_loss=0.085314
+I0103 22:56:10.370481 140262765472832 train.py:201] Step: 1170/3000 39.0%, img/sec/core: 39.8, ETA: 0.86h
+I0103 22:56:26.415664 140262765472832 logging_writer.py:35] [1180] img_sec_core_train=40.026040, train_loss=0.174460
+I0103 22:56:26.418311 140262765472832 train.py:201] Step: 1180/3000 39.3%, img/sec/core: 40.0, ETA: 0.85h
+I0103 22:56:42.445066 140262765472832 logging_writer.py:35] [1190] img_sec_core_train=40.096605, train_loss=0.075671
+I0103 22:56:42.447442 140262765472832 train.py:201] Step: 1190/3000 39.7%, img/sec/core: 40.1, ETA: 0.85h
+I0103 22:56:42.493443 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 39.7% (1191/3000), ETA: 48m
+I0103 22:56:42.507778 140262765472832 logging_writer.py:35] [1191] steps_per_sec=0.623603
+I0103 22:56:58.478611 140262765472832 logging_writer.py:35] [1200] img_sec_core_train=39.753392, train_loss=0.092294
+I0103 22:56:58.481158 140262765472832 train.py:201] Step: 1200/3000 40.0%, img/sec/core: 39.8, ETA: 0.84h
+I0103 22:57:03.862513 140262765472832 train.py:225] Step: 1200 Learning rate: 0.0235210, Test accuracy: 0.96426, img/sec/core: 119.0
+I0103 22:57:03.864763 140262765472832 logging_writer.py:35] [1200] accuracy_test=0.9642578363418579, img_sec_core_test=119.008459, lr=0.023521
+I0103 22:57:03.874012 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1200
+I0103 22:57:05.692543 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1200
+I0103 22:57:05.693071 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1100
+I0103 22:57:05.759914 140262765472832 train.py:248] Stored checkpoint at step 1200 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1200"
+I0103 22:57:21.786409 140262765472832 logging_writer.py:35] [1210] img_sec_core_train=206.718859, train_loss=0.086425
+I0103 22:57:21.789411 140262765472832 train.py:201] Step: 1210/3000 40.3%, img/sec/core: 206.7, ETA: 0.84h
+I0103 22:57:37.819247 140262765472832 logging_writer.py:35] [1220] img_sec_core_train=39.790178, train_loss=0.073869
+I0103 22:57:37.821653 140262765472832 train.py:201] Step: 1220/3000 40.7%, img/sec/core: 39.8, ETA: 0.83h
+I0103 22:57:53.842246 140262765472832 logging_writer.py:35] [1230] img_sec_core_train=39.903850, train_loss=0.106559
+I0103 22:57:53.844693 140262765472832 train.py:201] Step: 1230/3000 41.0%, img/sec/core: 39.9, ETA: 0.83h
+I0103 22:57:53.879148 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 41.0% (1231/3000), ETA: 52m
+I0103 22:57:53.880628 140262765472832 logging_writer.py:35] [1231] steps_per_sec=0.560334
+I0103 22:58:09.868486 140262765472832 logging_writer.py:35] [1240] img_sec_core_train=40.132764, train_loss=0.107754
+I0103 22:58:09.871024 140262765472832 train.py:201] Step: 1240/3000 41.3%, img/sec/core: 40.1, ETA: 0.82h
+I0103 22:58:25.901785 140262765472832 logging_writer.py:35] [1250] img_sec_core_train=39.671833, train_loss=0.070888
+I0103 22:58:25.904210 140262765472832 train.py:201] Step: 1250/3000 41.7%, img/sec/core: 39.7, ETA: 0.82h
+I0103 22:58:41.931414 140262765472832 logging_writer.py:35] [1260] img_sec_core_train=39.687414, train_loss=0.088765
+I0103 22:58:41.933739 140262765472832 train.py:201] Step: 1260/3000 42.0%, img/sec/core: 39.7, ETA: 0.81h
+I0103 22:58:57.968131 140262765472832 logging_writer.py:35] [1270] img_sec_core_train=40.120417, train_loss=0.045395
+I0103 22:58:57.971067 140262765472832 train.py:201] Step: 1270/3000 42.3%, img/sec/core: 40.1, ETA: 0.81h
+I0103 22:58:58.022120 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 42.4% (1271/3000), ETA: 46m
+I0103 22:58:58.024058 140262765472832 logging_writer.py:35] [1271] steps_per_sec=0.623608
+I0103 22:59:13.995489 140262765472832 logging_writer.py:35] [1280] img_sec_core_train=40.208925, train_loss=0.111022
+I0103 22:59:13.997849 140262765472832 train.py:201] Step: 1280/3000 42.7%, img/sec/core: 40.2, ETA: 0.80h
+I0103 22:59:30.025269 140262765472832 logging_writer.py:35] [1290] img_sec_core_train=39.821534, train_loss=0.074031
+I0103 22:59:30.028589 140262765472832 train.py:201] Step: 1290/3000 43.0%, img/sec/core: 39.8, ETA: 0.80h
+I0103 22:59:46.071998 140262765472832 logging_writer.py:35] [1300] img_sec_core_train=39.951356, train_loss=0.085120
+I0103 22:59:46.074265 140262765472832 train.py:201] Step: 1300/3000 43.3%, img/sec/core: 40.0, ETA: 0.79h
+I0103 22:59:51.483567 140262765472832 train.py:225] Step: 1300 Learning rate: 0.0219708, Test accuracy: 0.96895, img/sec/core: 118.4
+I0103 22:59:51.485017 140262765472832 logging_writer.py:35] [1300] accuracy_test=0.968945324420929, img_sec_core_test=118.372341, lr=0.021971
+I0103 22:59:51.493195 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1300
+I0103 22:59:53.207616 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1300
+I0103 22:59:53.208258 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1200
+I0103 22:59:53.273542 140262765472832 train.py:248] Stored checkpoint at step 1300 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1300"
+I0103 23:00:09.317003 140262765472832 logging_writer.py:35] [1310] img_sec_core_train=213.557177, train_loss=0.063210
+I0103 23:00:09.319836 140262765472832 train.py:201] Step: 1310/3000 43.7%, img/sec/core: 213.6, ETA: 0.79h
+I0103 23:00:09.347967 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 43.7% (1311/3000), ETA: 50m
+I0103 23:00:09.348717 140262765472832 logging_writer.py:35] [1311] steps_per_sec=0.560806
+I0103 23:00:25.339085 140262765472832 logging_writer.py:35] [1320] img_sec_core_train=39.851536, train_loss=0.093323
+I0103 23:00:25.341615 140262765472832 train.py:201] Step: 1320/3000 44.0%, img/sec/core: 39.9, ETA: 0.79h
+I0103 23:00:41.373430 140262765472832 logging_writer.py:35] [1330] img_sec_core_train=39.916812, train_loss=0.064376
+I0103 23:00:41.375951 140262765472832 train.py:201] Step: 1330/3000 44.3%, img/sec/core: 39.9, ETA: 0.78h
+I0103 23:00:57.405560 140262765472832 logging_writer.py:35] [1340] img_sec_core_train=39.920218, train_loss=0.098157
+I0103 23:00:57.407967 140262765472832 train.py:201] Step: 1340/3000 44.7%, img/sec/core: 39.9, ETA: 0.78h
+I0103 23:01:13.427775 140262765472832 logging_writer.py:35] [1350] img_sec_core_train=39.949795, train_loss=0.078549
+I0103 23:01:13.430087 140262765472832 train.py:201] Step: 1350/3000 45.0%, img/sec/core: 39.9, ETA: 0.77h
+I0103 23:01:13.475647 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 45.0% (1351/3000), ETA: 44m
+I0103 23:01:13.478245 140262765472832 logging_writer.py:35] [1351] steps_per_sec=0.623756
+I0103 23:01:29.459497 140262765472832 logging_writer.py:35] [1360] img_sec_core_train=39.879527, train_loss=0.071165
+I0103 23:01:29.461787 140262765472832 train.py:201] Step: 1360/3000 45.3%, img/sec/core: 39.9, ETA: 0.77h
+I0103 23:01:45.511090 140262765472832 logging_writer.py:35] [1370] img_sec_core_train=39.907972, train_loss=0.096106
+I0103 23:01:45.513531 140262765472832 train.py:201] Step: 1370/3000 45.7%, img/sec/core: 39.9, ETA: 0.76h
+I0103 23:02:01.535386 140262765472832 logging_writer.py:35] [1380] img_sec_core_train=39.850348, train_loss=0.080903
+I0103 23:02:01.537667 140262765472832 train.py:201] Step: 1380/3000 46.0%, img/sec/core: 39.9, ETA: 0.76h
+I0103 23:02:17.594778 140262765472832 logging_writer.py:35] [1390] img_sec_core_train=40.093853, train_loss=0.091730
+I0103 23:02:17.597284 140262765472832 train.py:201] Step: 1390/3000 46.3%, img/sec/core: 40.1, ETA: 0.75h
+I0103 23:02:17.675451 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 46.4% (1391/3000), ETA: 43m
+I0103 23:02:17.678918 140262765472832 logging_writer.py:35] [1391] steps_per_sec=0.623057
+I0103 23:02:33.642472 140262765472832 logging_writer.py:35] [1400] img_sec_core_train=39.802616, train_loss=0.072948
+I0103 23:02:33.645090 140262765472832 train.py:201] Step: 1400/3000 46.7%, img/sec/core: 39.8, ETA: 0.75h
+I0103 23:02:39.031802 140262765472832 train.py:225] Step: 1400 Learning rate: 0.0203191, Test accuracy: 0.97402, img/sec/core: 118.9
+I0103 23:02:39.033202 140262765472832 logging_writer.py:35] [1400] accuracy_test=0.9740234613418579, img_sec_core_test=118.871869, lr=0.020319
+I0103 23:02:39.042221 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1400
+I0103 23:02:40.895426 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1400
+I0103 23:02:40.896070 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1300
+I0103 23:02:40.961534 140262765472832 train.py:248] Stored checkpoint at step 1400 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1400"
+I0103 23:02:56.998324 140262765472832 logging_writer.py:35] [1410] img_sec_core_train=204.605903, train_loss=0.073470
+I0103 23:02:57.000640 140262765472832 train.py:201] Step: 1410/3000 47.0%, img/sec/core: 204.6, ETA: 0.74h
+I0103 23:03:13.026557 140262765472832 logging_writer.py:35] [1420] img_sec_core_train=39.832080, train_loss=0.061505
+I0103 23:03:13.029107 140262765472832 train.py:201] Step: 1420/3000 47.3%, img/sec/core: 39.8, ETA: 0.74h
+I0103 23:03:29.054073 140262765472832 logging_writer.py:35] [1430] img_sec_core_train=40.052588, train_loss=0.076625
+I0103 23:03:29.057128 140262765472832 train.py:201] Step: 1430/3000 47.7%, img/sec/core: 40.1, ETA: 0.73h
+I0103 23:03:29.086164 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 47.7% (1431/3000), ETA: 46m
+I0103 23:03:29.086985 140262765472832 logging_writer.py:35] [1431] steps_per_sec=0.560138
+I0103 23:03:45.079127 140262765472832 logging_writer.py:35] [1440] img_sec_core_train=39.698976, train_loss=0.063288
+I0103 23:03:45.082022 140262765472832 train.py:201] Step: 1440/3000 48.0%, img/sec/core: 39.7, ETA: 0.73h
+I0103 23:04:01.114723 140262765472832 logging_writer.py:35] [1450] img_sec_core_train=40.063731, train_loss=0.048745
+I0103 23:04:01.117045 140262765472832 train.py:201] Step: 1450/3000 48.3%, img/sec/core: 40.1, ETA: 0.72h
+I0103 23:04:17.143992 140262765472832 logging_writer.py:35] [1460] img_sec_core_train=39.826153, train_loss=0.059499
+I0103 23:04:17.146273 140262765472832 train.py:201] Step: 1460/3000 48.7%, img/sec/core: 39.8, ETA: 0.72h
+I0103 23:04:33.192927 140262765472832 logging_writer.py:35] [1470] img_sec_core_train=40.059599, train_loss=0.074600
+I0103 23:04:33.197754 140262765472832 train.py:201] Step: 1470/3000 49.0%, img/sec/core: 40.1, ETA: 0.71h
+I0103 23:04:33.241743 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 49.0% (1471/3000), ETA: 40m
+I0103 23:04:33.245159 140262765472832 logging_writer.py:35] [1471] steps_per_sec=0.623484
+I0103 23:04:49.229863 140262765472832 logging_writer.py:35] [1480] img_sec_core_train=39.536922, train_loss=0.061561
+I0103 23:04:49.232347 140262765472832 train.py:201] Step: 1480/3000 49.3%, img/sec/core: 39.5, ETA: 0.71h
+I0103 23:05:05.261748 140262765472832 logging_writer.py:35] [1490] img_sec_core_train=39.663203, train_loss=0.062309
+I0103 23:05:05.264496 140262765472832 train.py:201] Step: 1490/3000 49.7%, img/sec/core: 39.7, ETA: 0.71h
+I0103 23:05:21.294577 140262765472832 logging_writer.py:35] [1500] img_sec_core_train=40.525833, train_loss=0.093302
+I0103 23:05:21.297250 140262765472832 train.py:201] Step: 1500/3000 50.0%, img/sec/core: 40.5, ETA: 0.70h
+I0103 23:05:26.690661 140262765472832 train.py:225] Step: 1500 Learning rate: 0.0185897, Test accuracy: 0.97090, img/sec/core: 118.7
+I0103 23:05:26.692433 140262765472832 logging_writer.py:35] [1500] accuracy_test=0.970898449420929, img_sec_core_test=118.736532, lr=0.018590
+I0103 23:05:26.701450 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1500
+I0103 23:05:28.419568 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1500
+I0103 23:05:28.420135 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1400
+I0103 23:05:28.485512 140262765472832 train.py:248] Stored checkpoint at step 1500 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1500"
+I0103 23:05:44.516905 140262765472832 logging_writer.py:35] [1510] img_sec_core_train=210.076696, train_loss=0.074265
+I0103 23:05:44.519326 140262765472832 train.py:201] Step: 1510/3000 50.3%, img/sec/core: 210.1, ETA: 0.70h
+I0103 23:05:44.561485 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 50.4% (1511/3000), ETA: 44m
+I0103 23:05:44.562682 140262765472832 logging_writer.py:35] [1511] steps_per_sec=0.560855
+I0103 23:06:00.544564 140262765472832 logging_writer.py:35] [1520] img_sec_core_train=39.932477, train_loss=0.088224
+I0103 23:06:00.548313 140262765472832 train.py:201] Step: 1520/3000 50.7%, img/sec/core: 39.9, ETA: 0.69h
+I0103 23:06:16.591507 140262765472832 logging_writer.py:35] [1530] img_sec_core_train=39.976636, train_loss=0.092223
+I0103 23:06:16.593897 140262765472832 train.py:201] Step: 1530/3000 51.0%, img/sec/core: 40.0, ETA: 0.69h
+I0103 23:06:32.627655 140262765472832 logging_writer.py:35] [1540] img_sec_core_train=39.962330, train_loss=0.084716
+I0103 23:06:32.630136 140262765472832 train.py:201] Step: 1540/3000 51.3%, img/sec/core: 40.0, ETA: 0.68h
+I0103 23:06:48.668774 140262765472832 logging_writer.py:35] [1550] img_sec_core_train=39.803127, train_loss=0.070063
+I0103 23:06:48.671033 140262765472832 train.py:201] Step: 1550/3000 51.7%, img/sec/core: 39.8, ETA: 0.68h
+I0103 23:06:48.705849 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 51.7% (1551/3000), ETA: 38m
+I0103 23:06:48.707369 140262765472832 logging_writer.py:35] [1551] steps_per_sec=0.623593
+I0103 23:07:04.697921 140262765472832 logging_writer.py:35] [1560] img_sec_core_train=39.906702, train_loss=0.097828
+I0103 23:07:04.700243 140262765472832 train.py:201] Step: 1560/3000 52.0%, img/sec/core: 39.9, ETA: 0.67h
+I0103 23:07:20.725127 140262765472832 logging_writer.py:35] [1570] img_sec_core_train=39.818265, train_loss=0.075899
+I0103 23:07:20.728775 140262765472832 train.py:201] Step: 1570/3000 52.3%, img/sec/core: 39.8, ETA: 0.67h
+I0103 23:07:36.762131 140262765472832 logging_writer.py:35] [1580] img_sec_core_train=40.061711, train_loss=0.101214
+I0103 23:07:36.764545 140262765472832 train.py:201] Step: 1580/3000 52.7%, img/sec/core: 40.1, ETA: 0.66h
+I0103 23:07:52.785330 140262765472832 logging_writer.py:35] [1590] img_sec_core_train=39.998593, train_loss=0.103623
+I0103 23:07:52.787669 140262765472832 train.py:201] Step: 1590/3000 53.0%, img/sec/core: 40.0, ETA: 0.66h
+I0103 23:07:52.841657 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 53.0% (1591/3000), ETA: 37m
+I0103 23:07:52.843705 140262765472832 logging_writer.py:35] [1591] steps_per_sec=0.623677
+I0103 23:08:08.824419 140262765472832 logging_writer.py:35] [1600] img_sec_core_train=38.982873, train_loss=0.117665
+I0103 23:08:08.826679 140262765472832 train.py:201] Step: 1600/3000 53.3%, img/sec/core: 39.0, ETA: 0.65h
+I0103 23:08:14.254348 140262765472832 train.py:225] Step: 1600 Learning rate: 0.0168080, Test accuracy: 0.96445, img/sec/core: 118.0
+I0103 23:08:14.255754 140262765472832 logging_writer.py:35] [1600] accuracy_test=0.9644531011581421, img_sec_core_test=117.972813, lr=0.016808
+I0103 23:08:14.264441 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1600
+I0103 23:08:16.015153 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1600
+I0103 23:08:16.015746 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1500
+I0103 23:08:16.080640 140262765472832 train.py:248] Stored checkpoint at step 1600 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1600"
+I0103 23:08:32.103882 140262765472832 logging_writer.py:35] [1610] img_sec_core_train=210.906906, train_loss=0.064093
+I0103 23:08:32.106462 140262765472832 train.py:201] Step: 1610/3000 53.7%, img/sec/core: 210.9, ETA: 0.65h
+I0103 23:08:48.153654 140262765472832 logging_writer.py:35] [1620] img_sec_core_train=39.781252, train_loss=0.055740
+I0103 23:08:48.156070 140262765472832 train.py:201] Step: 1620/3000 54.0%, img/sec/core: 39.8, ETA: 0.65h
+I0103 23:09:04.181406 140262765472832 logging_writer.py:35] [1630] img_sec_core_train=39.984477, train_loss=0.076363
+I0103 23:09:04.184274 140262765472832 train.py:201] Step: 1630/3000 54.3%, img/sec/core: 40.0, ETA: 0.64h
+I0103 23:09:04.244981 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 54.4% (1631/3000), ETA: 40m
+I0103 23:09:04.249125 140262765472832 logging_writer.py:35] [1631] steps_per_sec=0.560199
+I0103 23:09:20.217534 140262765472832 logging_writer.py:35] [1640] img_sec_core_train=39.868781, train_loss=0.071524
+I0103 23:09:20.219978 140262765472832 train.py:201] Step: 1640/3000 54.7%, img/sec/core: 39.9, ETA: 0.64h
+I0103 23:09:36.253643 140262765472832 logging_writer.py:35] [1650] img_sec_core_train=40.135234, train_loss=0.076947
+I0103 23:09:36.256006 140262765472832 train.py:201] Step: 1650/3000 55.0%, img/sec/core: 40.1, ETA: 0.63h
+I0103 23:09:52.300443 140262765472832 logging_writer.py:35] [1660] img_sec_core_train=39.732425, train_loss=0.066735
+I0103 23:09:52.304048 140262765472832 train.py:201] Step: 1660/3000 55.3%, img/sec/core: 39.7, ETA: 0.63h
+I0103 23:10:08.327018 140262765472832 logging_writer.py:35] [1670] img_sec_core_train=39.913070, train_loss=0.086847
+I0103 23:10:08.329452 140262765472832 train.py:201] Step: 1670/3000 55.7%, img/sec/core: 39.9, ETA: 0.62h
+I0103 23:10:08.400347 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 55.7% (1671/3000), ETA: 35m
+I0103 23:10:08.405883 140262765472832 logging_writer.py:35] [1671] steps_per_sec=0.623485
+I0103 23:10:24.366939 140262765472832 logging_writer.py:35] [1680] img_sec_core_train=39.948909, train_loss=0.063463
+I0103 23:10:24.370261 140262765472832 train.py:201] Step: 1680/3000 56.0%, img/sec/core: 39.9, ETA: 0.62h
+I0103 23:10:40.394263 140262765472832 logging_writer.py:35] [1690] img_sec_core_train=39.790026, train_loss=0.061626
+I0103 23:10:40.397572 140262765472832 train.py:201] Step: 1690/3000 56.3%, img/sec/core: 39.8, ETA: 0.61h
+I0103 23:10:56.425953 140262765472832 logging_writer.py:35] [1700] img_sec_core_train=39.965682, train_loss=0.072011
+I0103 23:10:56.428481 140262765472832 train.py:201] Step: 1700/3000 56.7%, img/sec/core: 40.0, ETA: 0.61h
+I0103 23:11:01.843063 140262765472832 train.py:225] Step: 1700 Learning rate: 0.0150000, Test accuracy: 0.96133, img/sec/core: 118.3
+I0103 23:11:01.845118 140262765472832 logging_writer.py:35] [1700] accuracy_test=0.9613281488418579, img_sec_core_test=118.276498, lr=0.015000
+I0103 23:11:01.853551 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1700
+I0103 23:11:03.729457 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1700
+I0103 23:11:03.730064 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1600
+I0103 23:11:03.800538 140262765472832 train.py:248] Stored checkpoint at step 1700 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1700"
+I0103 23:11:19.823878 140262765472832 logging_writer.py:35] [1710] img_sec_core_train=197.894994, train_loss=0.076344
+I0103 23:11:19.826375 140262765472832 train.py:201] Step: 1710/3000 57.0%, img/sec/core: 197.9, ETA: 0.60h
+I0103 23:11:19.874094 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 57.0% (1711/3000), ETA: 38m
+I0103 23:11:19.880136 140262765472832 logging_writer.py:35] [1711] steps_per_sec=0.559646
+I0103 23:11:35.864000 140262765472832 logging_writer.py:35] [1720] img_sec_core_train=40.074613, train_loss=0.094965
+I0103 23:11:35.866377 140262765472832 train.py:201] Step: 1720/3000 57.3%, img/sec/core: 40.1, ETA: 0.60h
+I0103 23:11:51.900451 140262765472832 logging_writer.py:35] [1730] img_sec_core_train=39.624827, train_loss=0.072895
+I0103 23:11:51.904170 140262765472832 train.py:201] Step: 1730/3000 57.7%, img/sec/core: 39.6, ETA: 0.59h
+I0103 23:12:07.934911 140262765472832 logging_writer.py:35] [1740] img_sec_core_train=40.121471, train_loss=0.052425
+I0103 23:12:07.937448 140262765472832 train.py:201] Step: 1740/3000 58.0%, img/sec/core: 40.1, ETA: 0.59h
+I0103 23:12:23.980466 140262765472832 logging_writer.py:35] [1750] img_sec_core_train=39.371380, train_loss=0.064681
+I0103 23:12:23.982798 140262765472832 train.py:201] Step: 1750/3000 58.3%, img/sec/core: 39.4, ETA: 0.58h
+I0103 23:12:24.018496 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 58.4% (1751/3000), ETA: 33m
+I0103 23:12:24.019274 140262765472832 logging_writer.py:35] [1751] steps_per_sec=0.623592
+I0103 23:12:40.011976 140262765472832 logging_writer.py:35] [1760] img_sec_core_train=40.574944, train_loss=0.088661
+I0103 23:12:40.015615 140262765472832 train.py:201] Step: 1760/3000 58.7%, img/sec/core: 40.6, ETA: 0.58h
+I0103 23:12:56.055013 140262765472832 logging_writer.py:35] [1770] img_sec_core_train=39.861663, train_loss=0.044003
+I0103 23:12:56.057255 140262765472832 train.py:201] Step: 1770/3000 59.0%, img/sec/core: 39.9, ETA: 0.57h
+I0103 23:13:12.094729 140262765472832 logging_writer.py:35] [1780] img_sec_core_train=39.870117, train_loss=0.073700
+I0103 23:13:12.097034 140262765472832 train.py:201] Step: 1780/3000 59.3%, img/sec/core: 39.9, ETA: 0.57h
+I0103 23:13:28.139265 140262765472832 logging_writer.py:35] [1790] img_sec_core_train=39.866417, train_loss=0.068194
+I0103 23:13:28.142333 140262765472832 train.py:201] Step: 1790/3000 59.7%, img/sec/core: 39.9, ETA: 0.56h
+I0103 23:13:28.190768 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 59.7% (1791/3000), ETA: 32m
+I0103 23:13:28.198254 140262765472832 logging_writer.py:35] [1791] steps_per_sec=0.623324
+I0103 23:13:44.172632 140262765472832 logging_writer.py:35] [1800] img_sec_core_train=39.812187, train_loss=0.037074
+I0103 23:13:44.175119 140262765472832 train.py:201] Step: 1800/3000 60.0%, img/sec/core: 39.8, ETA: 0.56h
+I0103 23:13:49.571382 140262765472832 train.py:225] Step: 1800 Learning rate: 0.0131919, Test accuracy: 0.96250, img/sec/core: 118.7
+I0103 23:13:49.572872 140262765472832 logging_writer.py:35] [1800] accuracy_test=0.9624999761581421, img_sec_core_test=118.659755, lr=0.013192
+I0103 23:13:49.581048 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1800
+I0103 23:13:51.306841 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1800
+I0103 23:13:51.307683 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1700
+I0103 23:13:51.372012 140262765472832 train.py:248] Stored checkpoint at step 1800 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1800"
+I0103 23:14:07.399220 140262765472832 logging_writer.py:35] [1810] img_sec_core_train=211.899135, train_loss=0.070987
+I0103 23:14:07.401844 140262765472832 train.py:201] Step: 1810/3000 60.3%, img/sec/core: 211.9, ETA: 0.56h
+I0103 23:14:23.423551 140262765472832 logging_writer.py:35] [1820] img_sec_core_train=39.818967, train_loss=0.068836
+I0103 23:14:23.426051 140262765472832 train.py:201] Step: 1820/3000 60.7%, img/sec/core: 39.8, ETA: 0.55h
+I0103 23:14:39.456781 140262765472832 logging_writer.py:35] [1830] img_sec_core_train=39.941093, train_loss=0.058685
+I0103 23:14:39.460555 140262765472832 train.py:201] Step: 1830/3000 61.0%, img/sec/core: 39.9, ETA: 0.55h
+I0103 23:14:39.509241 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 61.0% (1831/3000), ETA: 34m
+I0103 23:14:39.511237 140262765472832 logging_writer.py:35] [1831] steps_per_sec=0.560864
+I0103 23:14:55.493604 140262765472832 logging_writer.py:35] [1840] img_sec_core_train=40.049237, train_loss=0.052146
+I0103 23:14:55.496143 140262765472832 train.py:201] Step: 1840/3000 61.3%, img/sec/core: 40.0, ETA: 0.54h
+I0103 23:15:11.593453 140262765472832 logging_writer.py:35] [1850] img_sec_core_train=39.899798, train_loss=0.077021
+I0103 23:15:11.595791 140262765472832 train.py:201] Step: 1850/3000 61.7%, img/sec/core: 39.9, ETA: 0.54h
+I0103 23:15:27.632516 140262765472832 logging_writer.py:35] [1860] img_sec_core_train=39.514131, train_loss=0.054141
+I0103 23:15:27.635423 140262765472832 train.py:201] Step: 1860/3000 62.0%, img/sec/core: 39.5, ETA: 0.53h
+I0103 23:15:43.668863 140262765472832 logging_writer.py:35] [1870] img_sec_core_train=39.962552, train_loss=0.059510
+I0103 23:15:43.671676 140262765472832 train.py:201] Step: 1870/3000 62.3%, img/sec/core: 40.0, ETA: 0.53h
+I0103 23:15:43.727623 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 62.4% (1871/3000), ETA: 30m
+I0103 23:15:43.729713 140262765472832 logging_writer.py:35] [1871] steps_per_sec=0.622877
+I0103 23:15:59.703880 140262765472832 logging_writer.py:35] [1880] img_sec_core_train=40.027762, train_loss=0.071729
+I0103 23:15:59.706788 140262765472832 train.py:201] Step: 1880/3000 62.7%, img/sec/core: 40.0, ETA: 0.52h
+I0103 23:16:15.736891 140262765472832 logging_writer.py:35] [1890] img_sec_core_train=39.980316, train_loss=0.067433
+I0103 23:16:15.739338 140262765472832 train.py:201] Step: 1890/3000 63.0%, img/sec/core: 40.0, ETA: 0.52h
+I0103 23:16:31.770909 140262765472832 logging_writer.py:35] [1900] img_sec_core_train=39.890442, train_loss=0.068472
+I0103 23:16:31.774312 140262765472832 train.py:201] Step: 1900/3000 63.3%, img/sec/core: 39.9, ETA: 0.51h
+I0103 23:16:37.198191 140262765472832 train.py:225] Step: 1900 Learning rate: 0.0114103, Test accuracy: 0.97480, img/sec/core: 118.1
+I0103 23:16:37.200202 140262765472832 logging_writer.py:35] [1900] accuracy_test=0.974804699420929, img_sec_core_test=118.078946, lr=0.011410
+I0103 23:16:37.209910 140262765472832 checkpoints.py:120] Saving checkpoint at step: 1900
+I0103 23:16:38.992410 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1900
+I0103 23:16:38.992965 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1800
+I0103 23:16:39.058332 140262765472832 train.py:248] Stored checkpoint at step 1900 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1900"
+I0103 23:16:55.089668 140262765472832 logging_writer.py:35] [1910] img_sec_core_train=207.872749, train_loss=0.053124
+I0103 23:16:55.092153 140262765472832 train.py:201] Step: 1910/3000 63.7%, img/sec/core: 207.9, ETA: 0.51h
+I0103 23:16:55.134073 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 63.7% (1911/3000), ETA: 32m
+I0103 23:16:55.141714 140262765472832 logging_writer.py:35] [1911] steps_per_sec=0.560172
+I0103 23:17:11.118570 140262765472832 logging_writer.py:35] [1920] img_sec_core_train=39.958396, train_loss=0.063073
+I0103 23:17:11.121396 140262765472832 train.py:201] Step: 1920/3000 64.0%, img/sec/core: 40.0, ETA: 0.50h
+I0103 23:17:27.145861 140262765472832 logging_writer.py:35] [1930] img_sec_core_train=39.813713, train_loss=0.085266
+I0103 23:17:27.148246 140262765472832 train.py:201] Step: 1930/3000 64.3%, img/sec/core: 39.8, ETA: 0.50h
+I0103 23:17:43.180553 140262765472832 logging_writer.py:35] [1940] img_sec_core_train=39.878661, train_loss=0.059029
+I0103 23:17:43.182935 140262765472832 train.py:201] Step: 1940/3000 64.7%, img/sec/core: 39.9, ETA: 0.50h
+I0103 23:17:59.231386 140262765472832 logging_writer.py:35] [1950] img_sec_core_train=40.046764, train_loss=0.069812
+I0103 23:17:59.234265 140262765472832 train.py:201] Step: 1950/3000 65.0%, img/sec/core: 40.0, ETA: 0.49h
+I0103 23:17:59.285156 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 65.0% (1951/3000), ETA: 28m
+I0103 23:17:59.290042 140262765472832 logging_writer.py:35] [1951] steps_per_sec=0.623528
+I0103 23:18:15.279325 140262765472832 logging_writer.py:35] [1960] img_sec_core_train=39.830521, train_loss=0.080799
+I0103 23:18:15.281742 140262765472832 train.py:201] Step: 1960/3000 65.3%, img/sec/core: 39.8, ETA: 0.49h
+I0103 23:18:31.318552 140262765472832 logging_writer.py:35] [1970] img_sec_core_train=39.900564, train_loss=0.056420
+I0103 23:18:31.321027 140262765472832 train.py:201] Step: 1970/3000 65.7%, img/sec/core: 39.9, ETA: 0.48h
+I0103 23:18:47.350558 140262765472832 logging_writer.py:35] [1980] img_sec_core_train=39.856592, train_loss=0.081544
+I0103 23:18:47.352988 140262765472832 train.py:201] Step: 1980/3000 66.0%, img/sec/core: 39.9, ETA: 0.48h
+I0103 23:19:03.379565 140262765472832 logging_writer.py:35] [1990] img_sec_core_train=39.698633, train_loss=0.072332
+I0103 23:19:03.382072 140262765472832 train.py:201] Step: 1990/3000 66.3%, img/sec/core: 39.7, ETA: 0.47h
+I0103 23:19:03.453945 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 66.4% (1991/3000), ETA: 26m
+I0103 23:19:03.458501 140262765472832 logging_writer.py:35] [1991] steps_per_sec=0.623361
+I0103 23:19:19.426465 140262765472832 logging_writer.py:35] [2000] img_sec_core_train=39.962550, train_loss=0.062139
+I0103 23:19:19.428797 140262765472832 train.py:201] Step: 2000/3000 66.7%, img/sec/core: 40.0, ETA: 0.47h
+I0103 23:19:24.854996 140262765472832 train.py:225] Step: 2000 Learning rate: 0.0096809, Test accuracy: 0.97207, img/sec/core: 118.0
+I0103 23:19:24.856817 140262765472832 logging_writer.py:35] [2000] accuracy_test=0.9720703363418579, img_sec_core_test=118.000262, lr=0.009681
+I0103 23:19:24.865907 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2000
+I0103 23:19:26.603502 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2000
+I0103 23:19:26.604109 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_1900
+I0103 23:19:26.668420 140262765472832 train.py:248] Stored checkpoint at step 2000 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2000"
+I0103 23:19:42.689346 140262765472832 logging_writer.py:35] [2010] img_sec_core_train=214.157513, train_loss=0.064288
+I0103 23:19:42.692395 140262765472832 train.py:201] Step: 2010/3000 67.0%, img/sec/core: 214.2, ETA: 0.46h
+I0103 23:19:58.714050 140262765472832 logging_writer.py:35] [2020] img_sec_core_train=39.813339, train_loss=0.071916
+I0103 23:19:58.717074 140262765472832 train.py:201] Step: 2020/3000 67.3%, img/sec/core: 39.8, ETA: 0.46h
+I0103 23:20:14.739218 140262765472832 logging_writer.py:35] [2030] img_sec_core_train=40.101514, train_loss=0.056577
+I0103 23:20:14.742752 140262765472832 train.py:201] Step: 2030/3000 67.7%, img/sec/core: 40.1, ETA: 0.45h
+I0103 23:20:14.832166 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 67.7% (2031/3000), ETA: 28m
+I0103 23:20:14.835860 140262765472832 logging_writer.py:35] [2031] steps_per_sec=0.560391
+I0103 23:20:30.778265 140262765472832 logging_writer.py:35] [2040] img_sec_core_train=39.778646, train_loss=0.057131
+I0103 23:20:30.780928 140262765472832 train.py:201] Step: 2040/3000 68.0%, img/sec/core: 39.8, ETA: 0.45h
+I0103 23:20:46.817325 140262765472832 logging_writer.py:35] [2050] img_sec_core_train=39.945212, train_loss=0.086143
+I0103 23:20:46.819758 140262765472832 train.py:201] Step: 2050/3000 68.3%, img/sec/core: 39.9, ETA: 0.44h
+I0103 23:21:02.850356 140262765472832 logging_writer.py:35] [2060] img_sec_core_train=39.886175, train_loss=0.052308
+I0103 23:21:02.852895 140262765472832 train.py:201] Step: 2060/3000 68.7%, img/sec/core: 39.9, ETA: 0.44h
+I0103 23:21:18.882278 140262765472832 logging_writer.py:35] [2070] img_sec_core_train=39.896622, train_loss=0.061093
+I0103 23:21:18.884761 140262765472832 train.py:201] Step: 2070/3000 69.0%, img/sec/core: 39.9, ETA: 0.43h
+I0103 23:21:18.959752 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 69.0% (2071/3000), ETA: 24m
+I0103 23:21:18.962131 140262765472832 logging_writer.py:35] [2071] steps_per_sec=0.623760
+I0103 23:21:34.936014 140262765472832 logging_writer.py:35] [2080] img_sec_core_train=39.997274, train_loss=0.036286
+I0103 23:21:34.938895 140262765472832 train.py:201] Step: 2080/3000 69.3%, img/sec/core: 40.0, ETA: 0.43h
+I0103 23:21:50.976264 140262765472832 logging_writer.py:35] [2090] img_sec_core_train=39.605719, train_loss=0.034381
+I0103 23:21:50.978824 140262765472832 train.py:201] Step: 2090/3000 69.7%, img/sec/core: 39.6, ETA: 0.42h
+I0103 23:22:07.015214 140262765472832 logging_writer.py:35] [2100] img_sec_core_train=40.027726, train_loss=0.071262
+I0103 23:22:07.018076 140262765472832 train.py:201] Step: 2100/3000 70.0%, img/sec/core: 40.0, ETA: 0.42h
+I0103 23:22:12.455379 140262765472832 train.py:225] Step: 2100 Learning rate: 0.0080292, Test accuracy: 0.96387, img/sec/core: 117.8
+I0103 23:22:12.457083 140262765472832 logging_writer.py:35] [2100] accuracy_test=0.9638671875, img_sec_core_test=117.767431, lr=0.008029
+I0103 23:22:12.465637 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2100
+I0103 23:22:14.294698 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2100
+I0103 23:22:14.295357 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2000
+I0103 23:22:14.359697 140262765472832 train.py:248] Stored checkpoint at step 2100 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2100"
+I0103 23:22:30.384777 140262765472832 logging_writer.py:35] [2110] img_sec_core_train=199.369111, train_loss=0.068080
+I0103 23:22:30.387138 140262765472832 train.py:201] Step: 2110/3000 70.3%, img/sec/core: 199.4, ETA: 0.42h
+I0103 23:22:30.418405 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 70.4% (2111/3000), ETA: 26m
+I0103 23:22:30.419219 140262765472832 logging_writer.py:35] [2111] steps_per_sec=0.559761
+I0103 23:22:46.409502 140262765472832 logging_writer.py:35] [2120] img_sec_core_train=40.126037, train_loss=0.072758
+I0103 23:22:46.412064 140262765472832 train.py:201] Step: 2120/3000 70.7%, img/sec/core: 40.1, ETA: 0.41h
+I0103 23:23:02.473127 140262765472832 logging_writer.py:35] [2130] img_sec_core_train=39.918474, train_loss=0.065185
+I0103 23:23:02.476285 140262765472832 train.py:201] Step: 2130/3000 71.0%, img/sec/core: 39.9, ETA: 0.41h
+I0103 23:23:18.507462 140262765472832 logging_writer.py:35] [2140] img_sec_core_train=39.803144, train_loss=0.048949
+I0103 23:23:18.510504 140262765472832 train.py:201] Step: 2140/3000 71.3%, img/sec/core: 39.8, ETA: 0.40h
+I0103 23:23:34.532135 140262765472832 logging_writer.py:35] [2150] img_sec_core_train=39.943682, train_loss=0.048599
+I0103 23:23:34.535442 140262765472832 train.py:201] Step: 2150/3000 71.7%, img/sec/core: 39.9, ETA: 0.40h
+I0103 23:23:34.623223 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 71.7% (2151/3000), ETA: 22m
+I0103 23:23:34.629460 140262765472832 logging_writer.py:35] [2151] steps_per_sec=0.623011
+I0103 23:23:50.564423 140262765472832 logging_writer.py:35] [2160] img_sec_core_train=39.908993, train_loss=0.063540
+I0103 23:23:50.567557 140262765472832 train.py:201] Step: 2160/3000 72.0%, img/sec/core: 39.9, ETA: 0.39h
+I0103 23:24:01.305341 140262765472832 local.py:50] Created artifact [2151] Profile of type ArtifactType.URL and value None.
+I0103 23:24:15.737326 140262765472832 logging_writer.py:35] [2170] img_sec_core_train=24.038435, train_loss=0.058548
+I0103 23:24:15.739867 140262765472832 train.py:201] Step: 2170/3000 72.3%, img/sec/core: 24.0, ETA: 0.39h
+I0103 23:24:31.764283 140262765472832 logging_writer.py:35] [2180] img_sec_core_train=43.987355, train_loss=0.047964
+I0103 23:24:31.766582 140262765472832 train.py:201] Step: 2180/3000 72.7%, img/sec/core: 44.0, ETA: 0.38h
+I0103 23:24:47.792773 140262765472832 logging_writer.py:35] [2190] img_sec_core_train=39.105439, train_loss=0.074932
+I0103 23:24:47.795177 140262765472832 train.py:201] Step: 2190/3000 73.0%, img/sec/core: 39.1, ETA: 0.38h
+I0103 23:24:47.887327 140262765472832 local.py:41] Setting work unit notes: 0.5 steps/s, 73.0% (2191/3000), ETA: 24m
+I0103 23:24:47.894834 140262765472832 logging_writer.py:35] [2191] steps_per_sec=0.545969
+I0103 23:25:03.836825 140262765472832 logging_writer.py:35] [2200] img_sec_core_train=40.845720, train_loss=0.061554
+I0103 23:25:03.839141 140262765472832 train.py:201] Step: 2200/3000 73.3%, img/sec/core: 40.8, ETA: 0.37h
+I0103 23:25:09.218700 140262765472832 train.py:225] Step: 2200 Learning rate: 0.0064790, Test accuracy: 0.97441, img/sec/core: 119.0
+I0103 23:25:09.220534 140262765472832 logging_writer.py:35] [2200] accuracy_test=0.974414050579071, img_sec_core_test=119.026775, lr=0.006479
+I0103 23:25:09.230231 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2200
+I0103 23:25:10.990572 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2200
+I0103 23:25:10.991327 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2100
+I0103 23:25:11.060735 140262765472832 train.py:248] Stored checkpoint at step 2200 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2200"
+I0103 23:25:27.093202 140262765472832 logging_writer.py:35] [2210] img_sec_core_train=208.648549, train_loss=0.069324
+I0103 23:25:27.096783 140262765472832 train.py:201] Step: 2210/3000 73.7%, img/sec/core: 208.6, ETA: 0.37h
+I0103 23:25:43.116900 140262765472832 logging_writer.py:35] [2220] img_sec_core_train=39.930919, train_loss=0.040140
+I0103 23:25:43.119614 140262765472832 train.py:201] Step: 2220/3000 74.0%, img/sec/core: 39.9, ETA: 0.37h
+I0103 23:25:59.152376 140262765472832 logging_writer.py:35] [2230] img_sec_core_train=40.015451, train_loss=0.059760
+I0103 23:25:59.154773 140262765472832 train.py:201] Step: 2230/3000 74.3%, img/sec/core: 40.0, ETA: 0.36h
+I0103 23:25:59.261314 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 74.4% (2231/3000), ETA: 22m
+I0103 23:25:59.263068 140262765472832 logging_writer.py:35] [2231] steps_per_sec=0.560426
+I0103 23:26:15.216775 140262765472832 logging_writer.py:35] [2240] img_sec_core_train=39.850550, train_loss=0.058337
+I0103 23:26:15.219210 140262765472832 train.py:201] Step: 2240/3000 74.7%, img/sec/core: 39.9, ETA: 0.36h
+I0103 23:26:31.250435 140262765472832 logging_writer.py:35] [2250] img_sec_core_train=39.748082, train_loss=0.044129
+I0103 23:26:31.254704 140262765472832 train.py:201] Step: 2250/3000 75.0%, img/sec/core: 39.7, ETA: 0.35h
+I0103 23:26:47.282289 140262765472832 logging_writer.py:35] [2260] img_sec_core_train=39.354422, train_loss=0.037821
+I0103 23:26:47.285132 140262765472832 train.py:201] Step: 2260/3000 75.3%, img/sec/core: 39.4, ETA: 0.35h
+I0103 23:27:03.313733 140262765472832 logging_writer.py:35] [2270] img_sec_core_train=40.627011, train_loss=0.042423
+I0103 23:27:03.317267 140262765472832 train.py:201] Step: 2270/3000 75.7%, img/sec/core: 40.6, ETA: 0.34h
+I0103 23:27:03.349701 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 75.7% (2271/3000), ETA: 19m
+I0103 23:27:03.350426 140262765472832 logging_writer.py:35] [2271] steps_per_sec=0.624138
+I0103 23:27:19.340817 140262765472832 logging_writer.py:35] [2280] img_sec_core_train=39.889938, train_loss=0.042651
+I0103 23:27:19.343218 140262765472832 train.py:201] Step: 2280/3000 76.0%, img/sec/core: 39.9, ETA: 0.34h
+I0103 23:27:35.363287 140262765472832 logging_writer.py:35] [2290] img_sec_core_train=39.845436, train_loss=0.062236
+I0103 23:27:35.366250 140262765472832 train.py:201] Step: 2290/3000 76.3%, img/sec/core: 39.8, ETA: 0.33h
+I0103 23:27:51.387723 140262765472832 logging_writer.py:35] [2300] img_sec_core_train=40.020695, train_loss=0.071965
+I0103 23:27:51.391278 140262765472832 train.py:201] Step: 2300/3000 76.7%, img/sec/core: 40.0, ETA: 0.33h
+I0103 23:27:56.759638 140262765472832 train.py:225] Step: 2300 Learning rate: 0.0050532, Test accuracy: 0.97207, img/sec/core: 119.3
+I0103 23:27:56.761118 140262765472832 logging_writer.py:35] [2300] accuracy_test=0.9720703363418579, img_sec_core_test=119.274473, lr=0.005053
+I0103 23:27:56.769595 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2300
+I0103 23:27:58.509151 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2300
+I0103 23:27:58.509733 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2200
+I0103 23:27:58.567138 140262765472832 train.py:248] Stored checkpoint at step 2300 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2300"
+I0103 23:28:14.586344 140262765472832 logging_writer.py:35] [2310] img_sec_core_train=212.171332, train_loss=0.052340
+I0103 23:28:14.588793 140262765472832 train.py:201] Step: 2310/3000 77.0%, img/sec/core: 212.2, ETA: 0.32h
+I0103 23:28:14.631291 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 77.0% (2311/3000), ETA: 20m
+I0103 23:28:14.636937 140262765472832 logging_writer.py:35] [2311] steps_per_sec=0.561155
+I0103 23:28:30.617700 140262765472832 logging_writer.py:35] [2320] img_sec_core_train=39.947277, train_loss=0.065621
+I0103 23:28:30.619884 140262765472832 train.py:201] Step: 2320/3000 77.3%, img/sec/core: 39.9, ETA: 0.32h
+I0103 23:28:46.651457 140262765472832 logging_writer.py:35] [2330] img_sec_core_train=39.920386, train_loss=0.038125
+I0103 23:28:46.653922 140262765472832 train.py:201] Step: 2330/3000 77.7%, img/sec/core: 39.9, ETA: 0.31h
+I0103 23:29:02.719684 140262765472832 logging_writer.py:35] [2340] img_sec_core_train=39.739218, train_loss=0.065559
+I0103 23:29:02.722855 140262765472832 train.py:201] Step: 2340/3000 78.0%, img/sec/core: 39.7, ETA: 0.31h
+I0103 23:29:18.759431 140262765472832 logging_writer.py:35] [2350] img_sec_core_train=39.874082, train_loss=0.064875
+I0103 23:29:18.761840 140262765472832 train.py:201] Step: 2350/3000 78.3%, img/sec/core: 39.9, ETA: 0.30h
+I0103 23:29:18.801752 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 78.4% (2351/3000), ETA: 17m
+I0103 23:29:18.802641 140262765472832 logging_writer.py:35] [2351] steps_per_sec=0.623340
+I0103 23:29:34.787483 140262765472832 logging_writer.py:35] [2360] img_sec_core_train=39.961880, train_loss=0.055681
+I0103 23:29:34.790159 140262765472832 train.py:201] Step: 2360/3000 78.7%, img/sec/core: 40.0, ETA: 0.30h
+I0103 23:29:50.826074 140262765472832 logging_writer.py:35] [2370] img_sec_core_train=39.941432, train_loss=0.061973
+I0103 23:29:50.829460 140262765472832 train.py:201] Step: 2370/3000 79.0%, img/sec/core: 39.9, ETA: 0.29h
+I0103 23:30:06.856814 140262765472832 logging_writer.py:35] [2380] img_sec_core_train=39.944781, train_loss=0.052406
+I0103 23:30:06.859175 140262765472832 train.py:201] Step: 2380/3000 79.3%, img/sec/core: 39.9, ETA: 0.29h
+I0103 23:30:22.884539 140262765472832 logging_writer.py:35] [2390] img_sec_core_train=39.863994, train_loss=0.078751
+I0103 23:30:22.887205 140262765472832 train.py:201] Step: 2390/3000 79.7%, img/sec/core: 39.9, ETA: 0.29h
+I0103 23:30:22.946449 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 79.7% (2391/3000), ETA: 16m
+I0103 23:30:22.954633 140262765472832 logging_writer.py:35] [2391] steps_per_sec=0.623592
+I0103 23:30:38.920104 140262765472832 logging_writer.py:35] [2400] img_sec_core_train=39.926088, train_loss=0.044709
+I0103 23:30:38.923024 140262765472832 train.py:201] Step: 2400/3000 80.0%, img/sec/core: 39.9, ETA: 0.28h
+I0103 23:30:44.319140 140262765472832 train.py:225] Step: 2400 Learning rate: 0.0037723, Test accuracy: 0.97461, img/sec/core: 118.7
+I0103 23:30:44.320912 140262765472832 logging_writer.py:35] [2400] accuracy_test=0.974609375, img_sec_core_test=118.665793, lr=0.003772
+I0103 23:30:44.330145 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2400
+I0103 23:30:46.148354 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2400
+I0103 23:30:46.148926 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2300
+I0103 23:30:46.213467 140262765472832 train.py:248] Stored checkpoint at step 2400 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2400"
+I0103 23:31:02.243605 140262765472832 logging_writer.py:35] [2410] img_sec_core_train=204.358890, train_loss=0.043500
+I0103 23:31:02.246098 140262765472832 train.py:201] Step: 2410/3000 80.3%, img/sec/core: 204.4, ETA: 0.28h
+I0103 23:31:18.266167 140262765472832 logging_writer.py:35] [2420] img_sec_core_train=39.859479, train_loss=0.072757
+I0103 23:31:18.268759 140262765472832 train.py:201] Step: 2420/3000 80.7%, img/sec/core: 39.9, ETA: 0.27h
+I0103 23:31:34.306699 140262765472832 logging_writer.py:35] [2430] img_sec_core_train=39.934571, train_loss=0.080893
+I0103 23:31:34.309176 140262765472832 train.py:201] Step: 2430/3000 81.0%, img/sec/core: 39.9, ETA: 0.27h
+I0103 23:31:34.355479 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 81.0% (2431/3000), ETA: 16m
+I0103 23:31:34.357130 140262765472832 logging_writer.py:35] [2431] steps_per_sec=0.560151
+I0103 23:31:50.333647 140262765472832 logging_writer.py:35] [2440] img_sec_core_train=39.578763, train_loss=0.048875
+I0103 23:31:50.336011 140262765472832 train.py:201] Step: 2440/3000 81.3%, img/sec/core: 39.6, ETA: 0.26h
+I0103 23:32:06.366054 140262765472832 logging_writer.py:35] [2450] img_sec_core_train=40.307813, train_loss=0.043761
+I0103 23:32:06.369216 140262765472832 train.py:201] Step: 2450/3000 81.7%, img/sec/core: 40.3, ETA: 0.26h
+I0103 23:32:22.392857 140262765472832 logging_writer.py:35] [2460] img_sec_core_train=39.900126, train_loss=0.051581
+I0103 23:32:22.396713 140262765472832 train.py:201] Step: 2460/3000 82.0%, img/sec/core: 39.9, ETA: 0.25h
+I0103 23:32:38.423366 140262765472832 logging_writer.py:35] [2470] img_sec_core_train=39.864114, train_loss=0.049398
+I0103 23:32:38.426795 140262765472832 train.py:201] Step: 2470/3000 82.3%, img/sec/core: 39.9, ETA: 0.25h
+I0103 23:32:38.458372 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 82.4% (2471/3000), ETA: 14m
+I0103 23:32:38.460783 140262765472832 logging_writer.py:35] [2471] steps_per_sec=0.623997
+I0103 23:32:54.448835 140262765472832 logging_writer.py:35] [2480] img_sec_core_train=39.819169, train_loss=0.066173
+I0103 23:32:54.451099 140262765472832 train.py:201] Step: 2480/3000 82.7%, img/sec/core: 39.8, ETA: 0.24h
+I0103 23:33:10.486515 140262765472832 logging_writer.py:35] [2490] img_sec_core_train=39.755711, train_loss=0.083109
+I0103 23:33:10.489158 140262765472832 train.py:201] Step: 2490/3000 83.0%, img/sec/core: 39.8, ETA: 0.24h
+I0103 23:33:26.510767 140262765472832 logging_writer.py:35] [2500] img_sec_core_train=40.014507, train_loss=0.066389
+I0103 23:33:26.513091 140262765472832 train.py:201] Step: 2500/3000 83.3%, img/sec/core: 40.0, ETA: 0.23h
+I0103 23:33:31.883945 140262765472832 train.py:225] Step: 2500 Learning rate: 0.0026552, Test accuracy: 0.96504, img/sec/core: 119.2
+I0103 23:33:31.885863 140262765472832 logging_writer.py:35] [2500] accuracy_test=0.965039074420929, img_sec_core_test=119.229247, lr=0.002655
+I0103 23:33:31.894620 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2500
+I0103 23:33:33.663481 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2500
+I0103 23:33:33.664148 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2400
+I0103 23:33:33.723889 140262765472832 train.py:248] Stored checkpoint at step 2500 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2500"
+I0103 23:33:49.750041 140262765472832 logging_writer.py:35] [2510] img_sec_core_train=210.066092, train_loss=0.034126
+I0103 23:33:49.753481 140262765472832 train.py:201] Step: 2510/3000 83.7%, img/sec/core: 210.1, ETA: 0.23h
+I0103 23:33:49.793846 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 83.7% (2511/3000), ETA: 14m
+I0103 23:33:49.796836 140262765472832 logging_writer.py:35] [2511] steps_per_sec=0.560731
+I0103 23:34:05.780132 140262765472832 logging_writer.py:35] [2520] img_sec_core_train=39.796367, train_loss=0.062649
+I0103 23:34:05.782640 140262765472832 train.py:201] Step: 2520/3000 84.0%, img/sec/core: 39.8, ETA: 0.22h
+I0103 23:34:21.817249 140262765472832 logging_writer.py:35] [2530] img_sec_core_train=39.967313, train_loss=0.061323
+I0103 23:34:21.820680 140262765472832 train.py:201] Step: 2530/3000 84.3%, img/sec/core: 40.0, ETA: 0.22h
+I0103 23:34:37.859364 140262765472832 logging_writer.py:35] [2540] img_sec_core_train=39.951100, train_loss=0.062224
+I0103 23:34:37.863160 140262765472832 train.py:201] Step: 2540/3000 84.7%, img/sec/core: 40.0, ETA: 0.22h
+I0103 23:34:53.895147 140262765472832 logging_writer.py:35] [2550] img_sec_core_train=39.895006, train_loss=0.083487
+I0103 23:34:53.897523 140262765472832 train.py:201] Step: 2550/3000 85.0%, img/sec/core: 39.9, ETA: 0.21h
+I0103 23:34:53.943759 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 85.0% (2551/3000), ETA: 12m
+I0103 23:34:53.947859 140262765472832 logging_writer.py:35] [2551] steps_per_sec=0.623539
+I0103 23:35:09.929805 140262765472832 logging_writer.py:35] [2560] img_sec_core_train=39.934539, train_loss=0.050215
+I0103 23:35:09.932273 140262765472832 train.py:201] Step: 2560/3000 85.3%, img/sec/core: 39.9, ETA: 0.21h
+I0103 23:35:25.961232 140262765472832 logging_writer.py:35] [2570] img_sec_core_train=39.894460, train_loss=0.068897
+I0103 23:35:25.964018 140262765472832 train.py:201] Step: 2570/3000 85.7%, img/sec/core: 39.9, ETA: 0.20h
+I0103 23:35:42.004089 140262765472832 logging_writer.py:35] [2580] img_sec_core_train=39.923576, train_loss=0.080368
+I0103 23:35:42.006533 140262765472832 train.py:201] Step: 2580/3000 86.0%, img/sec/core: 39.9, ETA: 0.20h
+I0103 23:35:58.031017 140262765472832 logging_writer.py:35] [2590] img_sec_core_train=39.982033, train_loss=0.038111
+I0103 23:35:58.034371 140262765472832 train.py:201] Step: 2590/3000 86.3%, img/sec/core: 40.0, ETA: 0.19h
+I0103 23:35:58.076250 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 86.4% (2591/3000), ETA: 10m
+I0103 23:35:58.079187 140262765472832 logging_writer.py:35] [2591] steps_per_sec=0.623709
+I0103 23:36:14.058873 140262765472832 logging_writer.py:35] [2600] img_sec_core_train=39.824252, train_loss=0.064017
+I0103 23:36:14.061258 140262765472832 train.py:201] Step: 2600/3000 86.7%, img/sec/core: 39.8, ETA: 0.19h
+I0103 23:36:19.459743 140262765472832 train.py:225] Step: 2600 Learning rate: 0.0017182, Test accuracy: 0.97285, img/sec/core: 118.6
+I0103 23:36:19.461496 140262765472832 logging_writer.py:35] [2600] accuracy_test=0.972851574420929, img_sec_core_test=118.614883, lr=0.001718
+I0103 23:36:19.471265 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2600
+I0103 23:36:21.351468 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2600
+I0103 23:36:21.352291 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2500
+I0103 23:36:21.422564 140262765472832 train.py:248] Stored checkpoint at step 2600 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2600"
+I0103 23:36:37.456234 140262765472832 logging_writer.py:35] [2610] img_sec_core_train=189.010755, train_loss=0.056395
+I0103 23:36:37.458802 140262765472832 train.py:201] Step: 2610/3000 87.0%, img/sec/core: 189.0, ETA: 0.18h
+I0103 23:36:53.494511 140262765472832 logging_writer.py:35] [2620] img_sec_core_train=40.408284, train_loss=0.060787
+I0103 23:36:53.496785 140262765472832 train.py:201] Step: 2620/3000 87.3%, img/sec/core: 40.4, ETA: 0.18h
+I0103 23:37:09.518777 140262765472832 logging_writer.py:35] [2630] img_sec_core_train=39.874824, train_loss=0.048849
+I0103 23:37:09.522500 140262765472832 train.py:201] Step: 2630/3000 87.7%, img/sec/core: 39.9, ETA: 0.17h
+I0103 23:37:09.568579 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 87.7% (2631/3000), ETA: 10m
+I0103 23:37:09.571380 140262765472832 logging_writer.py:35] [2631] steps_per_sec=0.559501
+I0103 23:37:25.556447 140262765472832 logging_writer.py:35] [2640] img_sec_core_train=39.970562, train_loss=0.045688
+I0103 23:37:25.558735 140262765472832 train.py:201] Step: 2640/3000 88.0%, img/sec/core: 40.0, ETA: 0.17h
+I0103 23:37:41.593075 140262765472832 logging_writer.py:35] [2650] img_sec_core_train=39.857678, train_loss=0.050171
+I0103 23:37:41.595618 140262765472832 train.py:201] Step: 2650/3000 88.3%, img/sec/core: 39.9, ETA: 0.16h
+I0103 23:37:57.618653 140262765472832 logging_writer.py:35] [2660] img_sec_core_train=39.978506, train_loss=0.047078
+I0103 23:37:57.620913 140262765472832 train.py:201] Step: 2660/3000 88.7%, img/sec/core: 40.0, ETA: 0.16h
+I0103 23:38:13.657736 140262765472832 logging_writer.py:35] [2670] img_sec_core_train=39.809120, train_loss=0.033100
+I0103 23:38:13.660011 140262765472832 train.py:201] Step: 2670/3000 89.0%, img/sec/core: 39.8, ETA: 0.15h
+I0103 23:38:13.706280 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 89.0% (2671/3000), ETA: 8m
+I0103 23:38:13.707627 140262765472832 logging_writer.py:35] [2671] steps_per_sec=0.623659
+I0103 23:38:29.686421 140262765472832 logging_writer.py:35] [2680] img_sec_core_train=39.853577, train_loss=0.045473
+I0103 23:38:29.690015 140262765472832 train.py:201] Step: 2680/3000 89.3%, img/sec/core: 39.9, ETA: 0.15h
+I0103 23:38:45.716439 140262765472832 logging_writer.py:35] [2690] img_sec_core_train=39.966384, train_loss=0.069208
+I0103 23:38:45.718797 140262765472832 train.py:201] Step: 2690/3000 89.7%, img/sec/core: 40.0, ETA: 0.14h
+I0103 23:39:01.745171 140262765472832 logging_writer.py:35] [2700] img_sec_core_train=39.935312, train_loss=0.055585
+I0103 23:39:01.747493 140262765472832 train.py:201] Step: 2700/3000 90.0%, img/sec/core: 39.9, ETA: 0.14h
+I0103 23:39:07.210710 140262765472832 train.py:225] Step: 2700 Learning rate: 0.0009748, Test accuracy: 0.96855, img/sec/core: 117.2
+I0103 23:39:07.212891 140262765472832 logging_writer.py:35] [2700] accuracy_test=0.968554675579071, img_sec_core_test=117.226497, lr=0.000975
+I0103 23:39:07.221541 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2700
+I0103 23:39:08.954524 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2700
+I0103 23:39:08.955157 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2600
+I0103 23:39:09.016027 140262765472832 train.py:248] Stored checkpoint at step 2700 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2700"
+I0103 23:39:25.038457 140262765472832 logging_writer.py:35] [2710] img_sec_core_train=207.660513, train_loss=0.036839
+I0103 23:39:25.041289 140262765472832 train.py:201] Step: 2710/3000 90.3%, img/sec/core: 207.7, ETA: 0.14h
+I0103 23:39:25.129261 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 90.4% (2711/3000), ETA: 8m
+I0103 23:39:25.141027 140262765472832 logging_writer.py:35] [2711] steps_per_sec=0.560045
+I0103 23:39:41.084956 140262765472832 logging_writer.py:35] [2720] img_sec_core_train=39.917692, train_loss=0.047864
+I0103 23:39:41.088355 140262765472832 train.py:201] Step: 2720/3000 90.7%, img/sec/core: 39.9, ETA: 0.13h
+I0103 23:39:57.110220 140262765472832 logging_writer.py:35] [2730] img_sec_core_train=39.886700, train_loss=0.033901
+I0103 23:39:57.112542 140262765472832 train.py:201] Step: 2730/3000 91.0%, img/sec/core: 39.9, ETA: 0.13h
+I0103 23:40:13.149698 140262765472832 logging_writer.py:35] [2740] img_sec_core_train=39.978024, train_loss=0.049357
+I0103 23:40:13.152390 140262765472832 train.py:201] Step: 2740/3000 91.3%, img/sec/core: 40.0, ETA: 0.12h
+I0103 23:40:29.191598 140262765472832 logging_writer.py:35] [2750] img_sec_core_train=39.942912, train_loss=0.035746
+I0103 23:40:29.193860 140262765472832 train.py:201] Step: 2750/3000 91.7%, img/sec/core: 39.9, ETA: 0.12h
+I0103 23:40:29.221748 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 91.7% (2751/3000), ETA: 6m
+I0103 23:40:29.222596 140262765472832 logging_writer.py:35] [2751] steps_per_sec=0.624095
+I0103 23:40:45.213945 140262765472832 logging_writer.py:35] [2760] img_sec_core_train=39.996407, train_loss=0.043308
+I0103 23:40:45.216361 140262765472832 train.py:201] Step: 2760/3000 92.0%, img/sec/core: 40.0, ETA: 0.11h
+I0103 23:41:01.249699 140262765472832 logging_writer.py:35] [2770] img_sec_core_train=38.703536, train_loss=0.036053
+I0103 23:41:01.252255 140262765472832 train.py:201] Step: 2770/3000 92.3%, img/sec/core: 38.7, ETA: 0.11h
+I0103 23:41:17.278028 140262765472832 logging_writer.py:35] [2780] img_sec_core_train=41.060316, train_loss=0.076092
+I0103 23:41:17.280235 140262765472832 train.py:201] Step: 2780/3000 92.7%, img/sec/core: 41.1, ETA: 0.10h
+I0103 23:41:33.328706 140262765472832 logging_writer.py:35] [2790] img_sec_core_train=39.285319, train_loss=0.056388
+I0103 23:41:33.330974 140262765472832 train.py:201] Step: 2790/3000 93.0%, img/sec/core: 39.3, ETA: 0.10h
+I0103 23:41:33.361023 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 93.0% (2791/3000), ETA: 5m
+I0103 23:41:33.362488 140262765472832 logging_writer.py:35] [2791] steps_per_sec=0.623643
+I0103 23:41:49.351252 140262765472832 logging_writer.py:35] [2800] img_sec_core_train=40.729791, train_loss=0.037673
+I0103 23:41:49.353487 140262765472832 train.py:201] Step: 2800/3000 93.3%, img/sec/core: 40.7, ETA: 0.09h
+I0103 23:41:54.794459 140262765472832 train.py:225] Step: 2800 Learning rate: 0.0004359, Test accuracy: 0.97070, img/sec/core: 117.7
+I0103 23:41:54.796016 140262765472832 logging_writer.py:35] [2800] accuracy_test=0.970703125, img_sec_core_test=117.691293, lr=0.000436
+I0103 23:41:54.806358 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2800
+I0103 23:41:56.534229 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2800
+I0103 23:41:56.534771 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2700
+I0103 23:41:56.598416 140262765472832 train.py:248] Stored checkpoint at step 2800 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2800"
+I0103 23:42:12.630860 140262765472832 logging_writer.py:35] [2810] img_sec_core_train=215.073263, train_loss=0.045639
+I0103 23:42:12.634482 140262765472832 train.py:201] Step: 2810/3000 93.7%, img/sec/core: 215.1, ETA: 0.09h
+I0103 23:42:28.670748 140262765472832 logging_writer.py:35] [2820] img_sec_core_train=39.774798, train_loss=0.049133
+I0103 23:42:28.673568 140262765472832 train.py:201] Step: 2820/3000 94.0%, img/sec/core: 39.8, ETA: 0.08h
+I0103 23:42:44.704847 140262765472832 logging_writer.py:35] [2830] img_sec_core_train=39.821408, train_loss=0.052231
+I0103 23:42:44.707561 140262765472832 train.py:201] Step: 2830/3000 94.3%, img/sec/core: 39.8, ETA: 0.08h
+I0103 23:42:44.771231 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 94.4% (2831/3000), ETA: 5m
+I0103 23:42:44.776906 140262765472832 logging_writer.py:35] [2831] steps_per_sec=0.560149
+I0103 23:43:00.755040 140262765472832 logging_writer.py:35] [2840] img_sec_core_train=39.843856, train_loss=0.058441
+I0103 23:43:00.757532 140262765472832 train.py:201] Step: 2840/3000 94.7%, img/sec/core: 39.8, ETA: 0.07h
+I0103 23:43:16.793884 140262765472832 logging_writer.py:35] [2850] img_sec_core_train=39.948870, train_loss=0.054008
+I0103 23:43:16.796568 140262765472832 train.py:201] Step: 2850/3000 95.0%, img/sec/core: 39.9, ETA: 0.07h
+I0103 23:43:32.828260 140262765472832 logging_writer.py:35] [2860] img_sec_core_train=40.078365, train_loss=0.042203
+I0103 23:43:32.831509 140262765472832 train.py:201] Step: 2860/3000 95.3%, img/sec/core: 40.1, ETA: 0.07h
+I0103 23:43:48.869871 140262765472832 logging_writer.py:35] [2870] img_sec_core_train=39.736055, train_loss=0.062837
+I0103 23:43:48.872420 140262765472832 train.py:201] Step: 2870/3000 95.7%, img/sec/core: 39.7, ETA: 0.06h
+I0103 23:43:48.932750 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 95.7% (2871/3000), ETA: 3m
+I0103 23:43:48.937326 140262765472832 logging_writer.py:35] [2871] steps_per_sec=0.623423
+I0103 23:44:04.906128 140262765472832 logging_writer.py:35] [2880] img_sec_core_train=39.988719, train_loss=0.046169
+I0103 23:44:04.909205 140262765472832 train.py:201] Step: 2880/3000 96.0%, img/sec/core: 40.0, ETA: 0.06h
+I0103 23:44:20.942022 140262765472832 logging_writer.py:35] [2890] img_sec_core_train=39.751736, train_loss=0.051512
+I0103 23:44:20.944452 140262765472832 train.py:201] Step: 2890/3000 96.3%, img/sec/core: 39.8, ETA: 0.05h
+I0103 23:44:36.971792 140262765472832 logging_writer.py:35] [2900] img_sec_core_train=40.024208, train_loss=0.032898
+I0103 23:44:36.974377 140262765472832 train.py:201] Step: 2900/3000 96.7%, img/sec/core: 40.0, ETA: 0.05h
+I0103 23:44:42.363493 140262765472832 train.py:225] Step: 2900 Learning rate: 0.0001094, Test accuracy: 0.97070, img/sec/core: 118.8
+I0103 23:44:42.365048 140262765472832 logging_writer.py:35] [2900] accuracy_test=0.970703125, img_sec_core_test=118.817206, lr=0.000109
+I0103 23:44:42.373700 140262765472832 checkpoints.py:120] Saving checkpoint at step: 2900
+I0103 23:44:44.120858 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2900
+I0103 23:44:44.121372 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2800
+I0103 23:44:44.180138 140262765472832 train.py:248] Stored checkpoint at step 2900 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2900"
+I0103 23:45:00.207327 140262765472832 logging_writer.py:35] [2910] img_sec_core_train=209.275656, train_loss=0.056156
+I0103 23:45:00.210202 140262765472832 train.py:201] Step: 2910/3000 97.0%, img/sec/core: 209.3, ETA: 0.04h
+I0103 23:45:00.248453 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 97.0% (2911/3000), ETA: 2m
+I0103 23:45:00.249161 140262765472832 logging_writer.py:35] [2911] steps_per_sec=0.560883
+I0103 23:45:16.234508 140262765472832 logging_writer.py:35] [2920] img_sec_core_train=39.822408, train_loss=0.050532
+I0103 23:45:16.237357 140262765472832 train.py:201] Step: 2920/3000 97.3%, img/sec/core: 39.8, ETA: 0.04h
+I0103 23:45:32.285512 140262765472832 logging_writer.py:35] [2930] img_sec_core_train=40.009860, train_loss=0.028248
+I0103 23:45:32.289240 140262765472832 train.py:201] Step: 2930/3000 97.7%, img/sec/core: 40.0, ETA: 0.03h
+I0103 23:45:48.322278 140262765472832 logging_writer.py:35] [2940] img_sec_core_train=39.904116, train_loss=0.043942
+I0103 23:45:48.324629 140262765472832 train.py:201] Step: 2940/3000 98.0%, img/sec/core: 39.9, ETA: 0.03h
+I0103 23:46:04.344742 140262765472832 logging_writer.py:35] [2950] img_sec_core_train=39.962055, train_loss=0.053247
+I0103 23:46:04.347517 140262765472832 train.py:201] Step: 2950/3000 98.3%, img/sec/core: 40.0, ETA: 0.02h
+I0103 23:46:04.387114 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 98.4% (2951/3000), ETA: 1m
+I0103 23:46:04.389164 140262765472832 logging_writer.py:35] [2951] steps_per_sec=0.623650
+I0103 23:46:20.375378 140262765472832 logging_writer.py:35] [2960] img_sec_core_train=39.873330, train_loss=0.019629
+I0103 23:46:20.378324 140262765472832 train.py:201] Step: 2960/3000 98.7%, img/sec/core: 39.9, ETA: 0.02h
+I0103 23:46:36.405881 140262765472832 logging_writer.py:35] [2970] img_sec_core_train=39.887258, train_loss=0.034749
+I0103 23:46:36.408137 140262765472832 train.py:201] Step: 2970/3000 99.0%, img/sec/core: 39.9, ETA: 0.01h
+I0103 23:46:52.440928 140262765472832 logging_writer.py:35] [2980] img_sec_core_train=40.005915, train_loss=0.057305
+I0103 23:46:52.443320 140262765472832 train.py:201] Step: 2980/3000 99.3%, img/sec/core: 40.0, ETA: 0.01h
+I0103 23:47:08.479078 140262765472832 logging_writer.py:35] [2990] img_sec_core_train=39.921816, train_loss=0.071612
+I0103 23:47:08.482419 140262765472832 train.py:201] Step: 2990/3000 99.7%, img/sec/core: 39.9, ETA: 0.00h
+I0103 23:47:08.513803 140262765472832 local.py:41] Setting work unit notes: 0.6 steps/s, 99.7% (2991/3000), ETA: 0m
+I0103 23:47:08.514824 140262765472832 logging_writer.py:35] [2991] steps_per_sec=0.623764
+I0103 23:47:09.651654 140262765472832 local.py:41] Setting work unit notes: 7.9 steps/s, 100.0% (3000/3000), ETA: 0m
+I0103 23:47:09.669061 140262765472832 logging_writer.py:35] [3000] steps_per_sec=7.910360
+I0103 23:47:24.516097 140262765472832 logging_writer.py:35] [3000] img_sec_core_train=39.981988, train_loss=0.056996
+I0103 23:47:24.518454 140262765472832 train.py:201] Step: 3000/3000 100.0%, img/sec/core: 40.0, ETA: 0.00h
+I0103 23:47:29.942863 140262765472832 train.py:225] Step: 3000 Learning rate: 0.0000000, Test accuracy: 0.97090, img/sec/core: 118.1
+I0103 23:47:29.944595 140262765472832 logging_writer.py:35] [3000] accuracy_test=0.970898449420929, img_sec_core_test=118.052846, lr=0.000000
+I0103 23:47:29.953240 140262765472832 checkpoints.py:120] Saving checkpoint at step: 3000
+I0103 23:47:31.746512 140262765472832 checkpoints.py:149] Saved checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_3000
+I0103 23:47:31.747108 140262765472832 checkpoints.py:174] Removing checkpoint at /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_2900
+I0103 23:47:31.810993 140262765472832 train.py:248] Stored checkpoint at step 3000 to "/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/25/vit-1641248418/checkpoint_3000"

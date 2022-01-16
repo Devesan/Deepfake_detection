@@ -1,0 +1,26 @@
+{
+    "os": "Linux-5.4.0-1043-gcp-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2022-01-03T23:54:12.950739",
+    "startedAt": "2022-01-03T23:54:09.632291",
+    "docker": null,
+    "cpu_count": 96,
+    "cuda": null,
+    "args": [
+        "--workdir=/home/gdevesan_gmail_com/models_checkpoint/vit_wandb/15/vit-1641254046",
+        "--config=/home/gdevesan_gmail_com/resh_trans/vision_transformer/vit_jax/configs/vit.py:b16,/home/gdevesan_gmail_com/datasets/processed_images_15/processed_images",
+        "--config.pretrained_dir=gs://vit_models/imagenet21k"
+    ],
+    "state": "running",
+    "program": "/home/gdevesan_gmail_com/resh_trans/vision_transformer/vit_jax/main.py",
+    "codePath": "vit_jax/main.py",
+    "git": {
+        "remote": "https://github.com/reshinthadithyan/vision_transformer.git",
+        "commit": "2b3ddde9b96c11195b41abf3479b7b8e92a49948"
+    },
+    "email": null,
+    "root": "/home/gdevesan_gmail_com/resh_trans/vision_transformer",
+    "host": "t1v-n-9bf5c115-w-0",
+    "username": "gdevesan_gmail_com",
+    "executable": "/home/gdevesan_gmail_com/env/bin/python"
+}

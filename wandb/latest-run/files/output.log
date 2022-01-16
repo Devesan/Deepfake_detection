@@ -1,0 +1,81 @@
+I0104 23:47:40.846692 140012402842688 xla_bridge.py:243] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker:
+I0104 23:47:40.847528 140012402842688 xla_bridge.py:243] Unable to initialize backend 'gpu': NOT_FOUND: Could not find registered platform with name: "cuda". Available platform names are: Interpreter TPU Host
+I0104 23:47:47.083459 140012402842688 main.py:54] JAX process: 0 / 1
+I0104 23:47:47.083957 140012402842688 main.py:55] JAX local devices: [TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+I0104 23:47:47.084448 140012402842688 main.py:58] Using JAX XLA backend
+I0104 23:47:47.085055 140012402842688 main.py:60] Config: accum_steps: 8
+base_lr: 0.03
+batch: 512
+batch_eval: 512
+checkpoint_every: 1000
+dataset: cifar10
+decay_type: cosine
+eval_every: 100
+grad_norm_clip: 1.0
+model:
+  classifier: token
+  hidden_size: 768
+  name: ViT-B_16
+  patches:
+    size: !!python/tuple
+    - 16
+    - 16
+  representation_size: null
+  transformer:
+    attention_dropout_rate: 0.0
+    dropout_rate: 0.0
+    mlp_dim: 3072
+    num_heads: 12
+    num_layers: 12
+model_or_filename: null
+optim_dtype: bfloat16
+pp:
+  crop: 384
+  test: test
+  train: train[:98%]
+prefetch: 2
+pretrained_dir: gs://vit_models/imagenet21k
+progress_every: 10
+shuffle_buffer: 50000
+tfds_data_dir: null
+tfds_manual_dir: null
+total_steps: 3000
+trainer: train
+warmup_steps: 400
+I0104 23:47:47.089995 140012402842688 local.py:45] Setting task status: process_index: 0, process_count: 1
+I0104 23:47:47.090311 140012402842688 local.py:50] Created artifact workdir of type ArtifactType.DIRECTORY and value /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/vit-1641340053.
+I0104 23:47:47.091600 140012402842688 dataset_info.py:358] Load dataset info from /home/gdevesan_gmail_com/tensorflow_datasets/cifar10/3.0.2
+I0104 23:47:47.111760 140012402842688 input_pipeline.py:87] custom directory loading inplace ...
+I0104 23:47:47.112316 140012402842688 input_pipeline.py:88] /home/gdevesan_gmail_com/datasets/processed_images
+I0104 23:47:47.112714 140012402842688 input_pipeline.py:97] Reading dataset from directories "/home/gdevesan_gmail_com/datasets/processed_images/train" and "/home/gdevesan_gmail_com/datasets/processed_images/test"
+I0104 23:47:50.195815 140012402842688 train.py:81] <PrefetchDataset shapes: {image: (8, 64, 384, 384, 3), label: (8, 64, 2)}, types: {image: tf.float32, label: tf.float32}>
+I0104 23:47:50.197541 140012402842688 train.py:82] <PrefetchDataset shapes: {image: (8, 64, 384, 384, 3), label: (8, 64, 2)}, types: {image: tf.float32, label: tf.float32}>
+W0104 23:47:54.736137 140012402842688 dispatch.py:197] Compiling init_model (139995036566208) for args ().
+I0104 23:49:15.857267 140012402842688 checkpoint.py:71] Inspect extra keys:
+{'pre_logits/bias', 'pre_logits/kernel'}
+I0104 23:49:15.858338 140012402842688 checkpoint.py:164] load_pretrained: drop-head variant
+I0104 23:49:15.859129 140012402842688 checkpoint.py:174] load_pretrained: resized variant: (1, 197, 768) to (1, 577, 768)
+I0104 23:49:15.859604 140012402842688 checkpoint.py:186] load_pretrained: grid-size from 14 to 24
+W0104 23:49:15.897988 140012402842688 dispatch.py:197] Compiling prim_fun (139995032009728) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.916865 140012402842688 dispatch.py:197] Compiling prim_fun (139995017640192) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.925633 140012402842688 dispatch.py:197] Compiling prim_fun (139995017865728) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.944492 140012402842688 dispatch.py:197] Compiling prim_fun (139995030082176) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.962687 140012402842688 dispatch.py:197] Compiling prim_fun (139995017451264) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.970864 140012402842688 dispatch.py:197] Compiling prim_fun (139995016646848) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:15.989217 140012402842688 dispatch.py:197] Compiling prim_fun (139995032006720) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:16.084226 140012402842688 dispatch.py:197] Compiling prim_fun (139995016440512) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:16.133352 140012402842688 dispatch.py:197] Compiling prim_fun (139995032304960) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:16.142441 140012402842688 dispatch.py:197] Compiling prim_fun (139995016468864) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:16.202233 140012402842688 dispatch.py:197] Compiling prim_fun (139995017676992) for args (ShapedArray(bfloat16[]),).
+W0104 23:49:16.210554 140012402842688 dispatch.py:197] Compiling prim_fun (139995007401344) for args (ShapedArray(bfloat16[]),).
+I0104 23:49:16.219204 140012402842688 checkpoints.py:249] Found no checkpoint files in /home/gdevesan_gmail_com/models_checkpoint/vit_wandb/vit-1641340053
+I0104 23:49:16.219618 140012402842688 train.py:150] Will start/continue training at initial_step=1
+W0104 23:49:16.492209 140012402842688 dispatch.py:197] Compiling prim_fun (139995018641856) for args (ShapedArray(int32[]), ShapedArray(int32[])).
+W0104 23:49:16.502304 140012402842688 dispatch.py:197] Compiling prim_fun (139993414597120) for args (ShapedArray(int32[]),).
+W0104 23:49:16.510195 140012402842688 dispatch.py:197] Compiling prim_fun (139995019326272) for args (ShapedArray(uint32[]),).
+W0104 23:49:16.517751 140012402842688 dispatch.py:197] Compiling <lambda> (139995017078464) for args (ShapedArray(int32[]), ShapedArray(uint32[])).
+W0104 23:49:16.526402 140012402842688 dispatch.py:197] Compiling prim_fun (139994989152768) for args (ShapedArray(uint32[1]), ShapedArray(uint32[1])).
+I0104 23:49:16.554453 140012402842688 logging_writer.py:57] Hyperparameters: {'accum_steps': 8, 'base_lr': 0.03, 'batch': 512, 'batch_eval': 512, 'checkpoint_every': 1000, 'dataset': '/home/gdevesan_gmail_com/datasets/processed_images', 'decay_type': 'cosine', 'eval_every': 100, 'grad_norm_clip': 1.0, 'model': {'classifier': 'token', 'hidden_size': 768, 'name': 'ViT-B_16', 'patches': {'size': (16, 16)}, 'representation_size': None, 'transformer': {'attention_dropout_rate': 0.0, 'dropout_rate': 0.0, 'mlp_dim': 3072, 'num_heads': 12, 'num_layers': 12}}, 'model_or_filename': None, 'optim_dtype': 'bfloat16', 'pp': {'crop': 384, 'test': 'test', 'train': 'train[:98%]'}, 'prefetch': 2, 'pretrained_dir': 'gs://vit_models/imagenet21k', 'progress_every': 10, 'shuffle_buffer': 50000, 'tfds_data_dir': None, 'tfds_manual_dir': None, 'total_steps': 3000, 'trainer': 'train', 'warmup_steps': 400}
+I0104 23:49:16.599715 140012402842688 train.py:171] Starting training loop; initial compile can take a while...
+/home/gdevesan_gmail_com/env/lib/python3.8/site-packages/jax/_src/profiler.py:169: UserWarning: StepTraceContext has been renamed to StepTraceAnnotation. This alias will eventually be removed; please update your code.
+  warnings.warn(
